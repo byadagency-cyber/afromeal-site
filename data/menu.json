@@ -1,0 +1,41 @@
+{
+  "categories": [
+    { "id": "entrees", "name": "Nos Entrées", "order": 1 },
+    { "id": "plats", "name": "Nos Plats", "order": 2 },
+    { "id": "sandwichs", "name": "Sandwichs", "order": 3 },
+    { "id": "accompagnements", "name": "Accompagnements & Suppléments", "order": 4 },
+    { "id": "desserts", "name": "Desserts", "order": 5 },
+    { "id": "boissons", "name": "Boissons (33cl)", "order": 6 },
+    { "id": "sauces", "name": "Sauces", "order": 7 }
+  ],
+  "items": [
+    { "id": "e1", "category": "entrees", "name": "Samoussa Thon", "description": "Servis par portion de quatre", "price": "5,50 €", "available": true },
+    { "id": "e2", "category": "entrees", "name": "Samoussa Bœuf", "description": "Servis par portion de quatre", "price": "5,50 €", "available": true },
+    { "id": "p1", "category": "plats", "name": "Poulet Braisé", "description": "Cuisse de poulet marinée et braisée aux épices africaines. Accompagnée de riz noir.", "price": "11,90 €", "available": true },
+    { "id": "p2", "category": "plats", "name": "Poulet Mafé", "description": "Plat incontournable d'Afrique de l'ouest. Sauce onctueuse à base de beurre de cacahuète. Accompagné de riz blanc.", "price": "12,90 €", "available": true },
+    { "id": "p3", "category": "plats", "name": "Poulet Yassa", "description": "Plat authentique d'Afrique de l'ouest. Sauce acidulée aux oignons. Accompagné de riz blanc.", "price": "12,90 €", "available": true },
+    { "id": "p4", "category": "plats", "name": "Poisson Braisé", "description": "Poisson mariné et braisé aux épices africaines.", "price": "17,90 €", "available": true },
+    { "id": "p5", "category": "plats", "name": "Jamaïcan Curry", "description": "Sauce crémeuse afro-caribéenne à base de lait de coco, curry, accompagnée de riz blanc. (Crevettes ou Poulet)", "price": "14,90 €", "available": true },
+    { "id": "p6", "category": "plats", "name": "Dibi d'Agneau", "description": "Morceaux d'agneau aux épices africaines grillés au charbon de bois. Accompagné de riz noir.", "price": "16,90 €", "available": true },
+    { "id": "p7", "category": "plats", "name": "Dibi Poulet", "description": "Morceaux de poulet aux épices africaines grillés au charbon de bois. Accompagné de riz noir.", "price": "14,90 €", "available": true },
+    { "id": "s1", "category": "sandwichs", "name": "Wrap Exotique", "description": "Galette de blé avec poulet ou steack, sauce originale, salade, crudités et aloko.", "price": "6,90 € seul / 8,90 € menu", "available": true },
+    { "id": "s2", "category": "sandwichs", "name": "Chicken Dib's", "description": "Poulet aux épices africaines grillé au charbon de bois, salade, crudités.", "price": "8,90 € seul / 10,90 € menu", "available": true },
+    { "id": "s3", "category": "sandwichs", "name": "Agneau Dib's", "description": "Agneau aux épices africaines grillé au charbon de bois, salade, crudités.", "price": "10,90 € seul / 11,90 € menu", "available": true },
+    { "id": "a1", "category": "accompagnements", "name": "Riz blanc", "description": "", "price": "3,00 €", "available": true },
+    { "id": "a2", "category": "accompagnements", "name": "Riz noir", "description": "", "price": "4,00 €", "available": true },
+    { "id": "a3", "category": "accompagnements", "name": "Allocos", "description": "", "price": "4,00 €", "available": true },
+    { "id": "a4", "category": "accompagnements", "name": "Cuisse de poulet", "description": "", "price": "3,50 €", "available": true },
+    { "id": "a5", "category": "accompagnements", "name": "Frites de patate douce", "description": "", "price": "4,00 €", "available": true },
+    { "id": "d1", "category": "desserts", "name": "Tiramisu", "description": "", "price": "3,50 €", "available": true },
+    { "id": "d2", "category": "desserts", "name": "Degué", "description": "Semoule de mil au yaourt vanillé", "price": "4,00 €", "available": true },
+    { "id": "b1", "category": "boissons", "name": "Eau", "description": "", "price": "1,50 €", "available": true },
+    { "id": "b2", "category": "boissons", "name": "Coca", "description": "", "price": "2,00 €", "available": true },
+    { "id": "b3", "category": "boissons", "name": "Oasis Tropical", "description": "", "price": "2,00 €", "available": true },
+    { "id": "b4", "category": "boissons", "name": "Bissap", "description": "", "price": "3,00 €", "available": true },
+    { "id": "sc1", "category": "sauces", "name": "Sauce verte", "description": "", "price": "0,50 €", "available": true },
+    { "id": "sc2", "category": "sauces", "name": "Piment", "description": "", "price": "0,50 €", "available": true },
+    { "id": "sc3", "category": "sauces", "name": "Mayonnaise", "description": "", "price": "0,50 €", "available": true },
+    { "id": "sc4", "category": "sauces", "name": "Sauce chili", "description": "", "price": "0,50 €", "available": true },
+    { "id": "sc5", "category": "sauces", "name": "Sauce poivrons", "description": "", "price": "0,50 €", "available": true }
+  ]
+}
