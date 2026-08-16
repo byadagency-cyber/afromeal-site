@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+  <html lang="fr">
+  <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Espace restaurateur — AfroMeal</title>
+<meta name="robots" content="noindex, nofollow" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/admin.css" />
+  </head>
+  <body>
+
+  <!-- ---------- Écran de connexion ---------- -->
+  <div class="login-screen" id="loginScreen">
+  <div class="login-card">
+  <div class="mark">🍽</div>
+  <h1>Espace restaurateur</h1>
+  <p class="sub">Connectez-vous pour gérer le menu et les informations d'AfroMeal.</p>
+<form id="loginForm">
+<label for="password">Mot de passe</label>
+<input type="password" id="password" name="password" placeholder="••••••••" required autofocus />
+  <button type="submit" class="btn btn-primary">Se connecter</button>
+  <p class="error-msg" id="loginError"></p>
+  </form>
+  </div>
+  </div>
+
+  <!-- ---------- Tableau de bord ---------- -->
+  <div class="admin-shell" id="adminShell">
+  <aside class="sidebar">
+  <div class="brand"><span class="mark">🍽</span> AfroMeal</div>
+  <nav>
+  <button class="nav-btn active" data-panel="menuPanel">🍲 Menu</button>
+  <button class="nav-btn" data-panel="infoPanel">📍 Infos du restaurant</button>
+<button class="nav-btn" data-panel="securityPanel">🔒 Sécurité</button>
+</nav>
+<a class="view-site" href="/" target="_blank" rel="noopener">Voir le site public →</a>
+<button class="btn logout-btn" id="logoutBtn">Se déconnecter</button>
+</aside>
+
+<main class="main">
+<!-- Panel: Menu -->
+<section class="panel active" id="menuPanel">
+<h2>Gestion du menu</h2>
+<p class="subtitle">Les modifications apparaissent immédiatement sur le site public. Décochez « Visible » pour retirer un plat sans le supprimer (ex : rupture de stock).</p>
+<div class="toolbar">
+<div></div>
+<button class="btn btn-secondary btn-sm" id="addCategoryBtn">+ Nouvelle catégorie</button>
+</div>
+<div id="categoriesContainer"><p>Chargement…</p></div>
+</section>
+
+<!-- Panel: Infos du restaurant -->
+  <section class="panel" id="infoPanel">
+  <h2>Informations du restaurant</h2>
+<p class="subtitle">Adresse, téléphone, horaires et message mis en avant sur le site.</p>
+<form class="card" id="infoForm">
+<label for="infoName">Nom du restaurant</label>
+<input id="infoName" name="name" />
+
+<label for="infoIntro">Texte d'accroche (page d'accueil)</label>
+  <textarea id="infoIntro" name="intro" rows="3"></textarea>
+
+  <label for="infoAddress">Adresse</label>
+  <input id="infoAddress" name="address" />
+
+  <label for="infoPhone">Téléphone</label>
+<input id="infoPhone" name="phone" />
+
+<label for="infoInstagram">Lien Instagram</label>
+  <input id="infoInstagram" name="instagram" />
+
+  <label for="infoHighlight">Bandeau d'actualité (mis en avant en haut du site)</label>
+  <textarea id="infoHighlight" name="highlight" rows="2"></textarea>
+
+  <label>Horaires</label>
+  <div id="hoursContainer"></div>
+  <button type="button" class="btn btn-outline btn-sm" id="addHoursRow" style="margin-top:6px;">+ Ajouter une ligne d'horaires</button>
+
+  <button type="submit" class="btn btn-primary">Enregistrer les informations</button>
+  <p class="success-msg" id="infoSuccess"></p>
+  <p class="error-msg" id="infoError"></p>
+  </form>
+  </section>
+
+  <!-- Panel: Sécurité -->
+  <section class="panel" id="securityPanel">
+  <h2>Sécurité</h2>
+  <p class="subtitle">Changez le mot de passe d'accès à cet espace restaurateur.</p>
+<form class="card" id="passwordForm">
+<label for="currentPassword">Mot de passe actuel</label>
+  <input type="password" id="currentPassword" required />
+
+  <label for="newPassword">Nouveau mot de passe</label>
+  <input type="password" id="newPassword" minlength="6" required />
+
+  <label for="confirmPassword">Confirmer le nouveau mot de passe</label>
+  <input type="password" id="confirmPassword" minlength="6" required />
+
+  <button type="submit" class="btn btn-primary">Mettre à jour le mot de passe</button>
+  <p class="success-msg" id="passwordSuccess"></p>
+  <p class="error-msg" id="passwordError"></p>
+  </form>
+  </section>
+  </main>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="js/admin.js"></script>
+  </body>
+  </html>
+  
