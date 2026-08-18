@@ -40,6 +40,43 @@ async function apiFetch(url, options = {}) {
   return data;
 }
 
+async function uploadFile(file) {
+  const token = getToken();
+  const formData = new FormData();
+  formData.append("file", file);
+  const res = await fetch("/api/admin/upload", {
+    method: "POST",
+    headers: token ? { Authorization: "Bearer " + token } : {},
+    body: formData,
+  });
+  if (res.status === 401) {
+    clearToken();
+    showLogin();
+    throw new Error("Session expirée, merci de vous reconnecter.");
+  }
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok) throw new Error(data.error || "Échec de l'envoi du fichier.");
+  return data.url;
+}
+
+function isVideoFileUrl(url) {
+  return /\.(mp4|webm|mov)(\?.*)?$/i.test(String(url || "").trim());
+}
+
+function renderUploadPreview(el, url, emptyLabel) {
+  if (!el) return;
+  const trimmed = (url || "").trim();
+  if (!trimmed) {
+    el.textContent = emptyLabel || "Aucun fichier";
+    return;
+  }
+  if (isVideoFileUrl(trimmed)) {
+    el.innerHTML = `<video src="${attr(trimmed)}" muted></video>`;
+  } else {
+    el.innerHTML = `<img src="${attr(trimmed)}" alt="" />`;
+  }
+}
+
 function showLogin() {
   loginScreen.style.display = "flex";
   adminShell.classList.remove("visible");
@@ -49,6 +86,7 @@ function showAdmin() {
   adminShell.classList.add("visible");
   loadMenuPanel();
   loadInfoPanel();
+  loadReviewsPanel();
 }
 
 // ---------- Connexion ----------
@@ -135,20 +173,24 @@ function renderMenu(menu) {
         <button class="btn btn-outline btn-sm" data-delete-cat="${cat.id}">🗑 Supprimer la catégorie</button>
       </div>
       <div class="item-row head">
-        <div>Nom du plat</div><div>Description</div><div>Prix</div><div>Photo (URL)</div><div>Visible</div><div></div><div></div>
+        <div>Nom du plat</div><div>Description</div><div>Prix</div><div>Photo</div><div>Visible</div><div></div><div></div>
       </div>
       <div class="items-list"></div>
       <div class="add-item-form" data-add-form="${cat.id}">
         <input placeholder="Nom du nouveau plat" data-field="name" />
         <input placeholder="Description (optionnel)" data-field="description" />
         <input placeholder="Prix (ex: 12,90 €)" data-field="price" />
-        <input placeholder="Photo (URL, optionnel)" data-field="image" />
+        <div class="photo-field">
+          <input placeholder="Photo (URL, optionnel)" data-field="image" />
+          <label class="upload-btn-sm" title="Envoyer une photo">📷<input type="file" accept="image/*" data-upload-image hidden /></label>
+        </div>
         <button class="btn btn-secondary btn-sm" data-add-item="${cat.id}">+ Ajouter</button>
       </div>
     `;
     const itemsList = block.querySelector(".items-list");
     items.forEach((item) => itemsList.appendChild(renderItemRow(item)));
     container.appendChild(block);
+    wireUploadButtons(block);
   });
 
   container.querySelectorAll("[data-delete-cat]").forEach((btn) => {
@@ -171,6 +213,25 @@ function renderMenu(menu) {
   });
 }
 
+function wireUploadButtons(scopeEl) {
+  scopeEl.querySelectorAll("[data-upload-image]").forEach((fileInput) => {
+    fileInput.addEventListener("change", async (e) => {
+      const file = e.target.files[0];
+      if (!file) return;
+      const photoField = fileInput.closest(".photo-field");
+      const textInput = photoField.querySelector('[data-field="image"]');
+      try {
+        showToast("Envoi de la photo…");
+        const url = await uploadFile(file);
+        textInput.value = url;
+        showToast("Photo envoyée ✅");
+      } catch (err) {
+        showToast(err.message, true);
+      }
+    });
+  });
+}
+
 function renderItemRow(item) {
   const row = document.createElement("div");
   row.className = "item-row" + (item.available === false ? " unavailable" : "");
@@ -178,7 +239,10 @@ function renderItemRow(item) {
     <input value="${attr(item.name)}" data-field="name" />
     <input value="${attr(item.description || "")}" data-field="description" />
     <input value="${attr(item.price)}" data-field="price" />
-    <input value="${attr(item.image || "")}" data-field="image" placeholder="URL de la photo" />
+    <div class="photo-field">
+      <input value="${attr(item.image || "")}" data-field="image" placeholder="URL de la photo" />
+      <label class="upload-btn-sm" title="Envoyer une photo">📷<input type="file" accept="image/*" data-upload-image hidden /></label>
+    </div>
     <button class="pill-toggle ${item.available === false ? "off" : "on"}" data-toggle-available>
       ${item.available === false ? "Masqué" : "Visible"}
     </button>
@@ -278,7 +342,10 @@ async function loadInfoPanel() {
     document.getElementById("infoPhone").value = info.phone || "";
     document.getElementById("infoInstagram").value = info.instagram || "";
     document.getElementById("infoWhatsapp").value = info.whatsapp || "";
+    document.getElementById("infoLogo").value = info.logo || "";
+    renderUploadPreview(document.getElementById("logoPreview"), info.logo, "Aucun logo");
     document.getElementById("infoCoverImage").value = info.coverImage || "";
+    renderUploadPreview(document.getElementById("coverPreview"), info.coverImage, "Aucun fichier");
     document.getElementById("infoHighlight").value = info.highlight || "";
     hoursRows = Array.isArray(info.hours) ? [...info.hours] : [];
     renderHoursRows();
@@ -313,6 +380,55 @@ document.getElementById("addHoursRow").addEventListener("click", () => {
   renderHoursRows();
 });
 
+// ---------- Upload logo & couverture (photo/vidéo) ----------
+document.getElementById("logoFile").addEventListener("change", async (e) => {
+  const file = e.target.files[0];
+  if (!file) return;
+  const statusEl = document.getElementById("logoUploadStatus");
+  statusEl.textContent = "Envoi en cours…";
+  try {
+    const url = await uploadFile(file);
+    document.getElementById("infoLogo").value = url;
+    renderUploadPreview(document.getElementById("logoPreview"), url, "Aucun logo");
+    statusEl.textContent = "Fichier envoyé ✅ — cliquez sur « Enregistrer les informations » pour valider.";
+  } catch (err) {
+    statusEl.textContent = err.message;
+  }
+});
+
+document.getElementById("logoRemoveBtn").addEventListener("click", () => {
+  document.getElementById("infoLogo").value = "";
+  document.getElementById("logoFile").value = "";
+  document.getElementById("logoUploadStatus").textContent = "";
+  renderUploadPreview(document.getElementById("logoPreview"), "", "Aucun logo");
+});
+
+document.getElementById("coverFile").addEventListener("change", async (e) => {
+  const file = e.target.files[0];
+  if (!file) return;
+  const statusEl = document.getElementById("coverUploadStatus");
+  statusEl.textContent = "Envoi en cours…";
+  try {
+    const url = await uploadFile(file);
+    document.getElementById("infoCoverImage").value = url;
+    renderUploadPreview(document.getElementById("coverPreview"), url, "Aucun fichier");
+    statusEl.textContent = "Fichier envoyé ✅ — cliquez sur « Enregistrer les informations » pour valider.";
+  } catch (err) {
+    statusEl.textContent = err.message;
+  }
+});
+
+document.getElementById("coverRemoveBtn").addEventListener("click", () => {
+  document.getElementById("infoCoverImage").value = "";
+  document.getElementById("coverFile").value = "";
+  document.getElementById("coverUploadStatus").textContent = "";
+  renderUploadPreview(document.getElementById("coverPreview"), "", "Aucun fichier");
+});
+
+document.getElementById("infoCoverImage").addEventListener("input", (e) => {
+  renderUploadPreview(document.getElementById("coverPreview"), e.target.value, "Aucun fichier");
+});
+
 document.getElementById("infoForm").addEventListener("submit", async (e) => {
   e.preventDefault();
   const successEl = document.getElementById("infoSuccess");
@@ -326,6 +442,7 @@ document.getElementById("infoForm").addEventListener("submit", async (e) => {
     phone: document.getElementById("infoPhone").value.trim(),
     instagram: document.getElementById("infoInstagram").value.trim(),
     whatsapp: document.getElementById("infoWhatsapp").value.trim(),
+    logo: document.getElementById("infoLogo").value.trim(),
     coverImage: document.getElementById("infoCoverImage").value.trim(),
     highlight: document.getElementById("infoHighlight").value.trim(),
     hours: hoursRows.filter((h) => h.days.trim() || h.times.trim()),
@@ -334,6 +451,78 @@ document.getElementById("infoForm").addEventListener("submit", async (e) => {
     await apiFetch("/api/admin/info", { method: "PUT", body: JSON.stringify(payload) });
     successEl.textContent = "Informations enregistrées ✅";
     showToast("Informations mises à jour ✅");
+  } catch (err) {
+    errorEl.textContent = err.message;
+  }
+});
+
+// ---------- Panel Avis clients ----------
+async function loadReviewsPanel() {
+  const container = document.getElementById("reviewsListAdmin");
+  container.innerHTML = "<p>Chargement…</p>";
+  try {
+    const data = await apiFetch("/api/admin/reviews");
+    renderReviewsAdmin(data.reviews || []);
+  } catch (err) {
+    container.innerHTML = `<p class="error-msg">${err.message}</p>`;
+  }
+}
+
+function renderReviewsAdmin(reviews) {
+  const container = document.getElementById("reviewsListAdmin");
+  container.innerHTML = "";
+  if (reviews.length === 0) {
+    container.innerHTML = "<p>Aucun avis pour l'instant. La section « avis » reste masquée sur le site tant qu'aucun avis n'est ajouté.</p>";
+    return;
+  }
+  reviews.forEach((r) => {
+    const row = document.createElement("div");
+    row.className = "review-row";
+    row.innerHTML = `
+      <div class="review-row-main">
+        <strong>${escapeHTML(r.author || "")}</strong>
+        <span class="review-row-stars">${"★".repeat(Math.max(1, Math.min(5, Number(r.rating) || 5)))}</span>
+        <p>${escapeHTML(r.text || "")}</p>
+      </div>
+      <button class="btn btn-danger btn-sm" data-delete-review="${r.id}">🗑</button>
+    `;
+    row.querySelector("[data-delete-review]").addEventListener("click", async () => {
+      if (!confirm("Supprimer cet avis ?")) return;
+      try {
+        await apiFetch(`/api/admin/reviews/${r.id}`, { method: "DELETE" });
+        showToast("Avis supprimé.");
+        loadReviewsPanel();
+      } catch (err) {
+        showToast(err.message, true);
+      }
+    });
+    container.appendChild(row);
+  });
+}
+
+document.getElementById("addReviewForm").addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const successEl = document.getElementById("reviewSuccess");
+  const errorEl = document.getElementById("reviewError");
+  successEl.textContent = "";
+  errorEl.textContent = "";
+  const author = document.getElementById("reviewAuthor").value.trim();
+  const text = document.getElementById("reviewText").value.trim();
+  const rating = Number(document.getElementById("reviewRating").value) || 5;
+  if (!author || !text) {
+    errorEl.textContent = "L'auteur et le texte de l'avis sont requis.";
+    return;
+  }
+  try {
+    await apiFetch("/api/admin/reviews", {
+      method: "POST",
+      body: JSON.stringify({ author, text, rating }),
+    });
+    successEl.textContent = "Avis ajouté ✅";
+    showToast("Avis ajouté ✅");
+    e.target.reset();
+    document.getElementById("reviewRating").value = 5;
+    loadReviewsPanel();
   } catch (err) {
     errorEl.textContent = err.message;
   }

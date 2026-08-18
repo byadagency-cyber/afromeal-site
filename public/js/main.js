@@ -38,8 +38,21 @@ async function loadInfo() {
     }
     if (info.coverImage) {
       const cover = document.getElementById("heroCoverPhoto");
-      cover.style.backgroundImage = `url("${info.coverImage.replace(/"/g, "")}")`;
+      if (isVideoUrl(info.coverImage)) {
+        cover.style.backgroundImage = "";
+        cover.innerHTML = `<video src="${attrHTML(info.coverImage)}" autoplay muted loop playsinline></video>`;
+      } else {
+        cover.innerHTML = "";
+        cover.style.backgroundImage = `url("${info.coverImage.replace(/"/g, "")}")`;
+      }
       cover.classList.add("visible");
+    }
+    if (info.logo) {
+      const logoImgHTML = `<img src="${attrHTML(info.logo)}" alt="AfroMeal" class="custom-logo-img" />`;
+      ["headerLogoBadge", "heroLogoBadge", "footerLogoBadge", "mapLogoBadge"].forEach((id) => {
+        const el = document.getElementById(id);
+        if (el) el.innerHTML = logoImgHTML;
+      });
     }
     restaurantWhatsapp = (info.whatsapp || "").trim();
     updateWhatsappAvailability();
@@ -143,6 +156,46 @@ async function loadMenu() {
   } catch (e) {
     contentEl.innerHTML = `<p class="menu-empty">Impossible de charger la carte pour le moment. Merci de réessayer plus tard.</p>`;
     console.error(e);
+  }
+}
+
+function isVideoUrl(url) {
+  return /\.(mp4|webm|mov)(\?.*)?$/i.test(String(url).trim());
+}
+
+// ---------- Avis clients ----------
+async function loadReviews() {
+  const section = document.getElementById("socialProof");
+  const listEl = document.getElementById("reviewsList");
+  if (!section || !listEl) return;
+  try {
+    const res = await fetch("/api/reviews");
+    if (!res.ok) throw new Error("Erreur de chargement des avis");
+    const data = await res.json();
+    const reviews = Array.isArray(data.reviews) ? data.reviews : [];
+
+    if (reviews.length === 0) {
+      section.style.display = "none";
+      listEl.innerHTML = "";
+      return;
+    }
+
+    listEl.innerHTML = reviews
+      .map((r) => {
+        const rating = Math.max(1, Math.min(5, Number(r.rating) || 5));
+        const stars = "★".repeat(rating) + "☆".repeat(5 - rating);
+        return `
+        <div class="review-item reveal in-view">
+          <div class="stars">${stars}</div>
+          <p class="quote">&laquo;&nbsp;${escapeHTML(r.text || "")}&nbsp;&raquo;</p>
+          <p class="attribution">— ${escapeHTML(r.author || "")}</p>
+        </div>`;
+      })
+      .join("");
+    section.style.display = "";
+  } catch (e) {
+    console.error("Impossible de charger les avis.", e);
+    section.style.display = "none";
   }
 }
 
@@ -341,6 +394,7 @@ document.getElementById("cartOverlay")?.addEventListener("click", closeCart);
 loadCartFromStorage();
 loadInfo();
 loadMenu().then(() => renderCart());
+loadReviews();
 
 // ---------- Révélation au défilement ----------
 const revealEls = document.querySelectorAll(".reveal:not(.in-view)");
