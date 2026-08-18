@@ -3,3 +3,5 @@ node_modules/
 data/admin.json
 npm-debug.log*
 .DS_Store
+public/uploads/*
+!public/uploads/.gitkeep

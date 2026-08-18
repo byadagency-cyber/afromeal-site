@@ -1,18 +1,19 @@
 /**
-* AfroMeal — serveur du site vitrine + panneau d'administration
-* ----------------------------------------------------------------
-* - Sert le site public (public/index.html) et le panneau admin (public/admin.html)
-* - Expose une API JSON pour lire/modifier le menu
-* - Authentification admin par mot de passe (haché avec scrypt, aucune dépendance externe)
-*
-* Démarrage : npm install && npm start
-* Mot de passe admin par défaut : voir README.md (à changer dès la première connexion !)
-*/
+ * AfroMeal — serveur du site vitrine + panneau d'administration
+ * ----------------------------------------------------------------
+ * - Sert le site public (public/index.html) et le panneau admin (public/admin.html)
+ * - Expose une API JSON pour lire/modifier le menu
+ * - Authentification admin par mot de passe (haché avec scrypt, aucune dépendance externe)
+ *
+ * Démarrage : npm install && npm start
+ * Mot de passe admin par défaut : voir README.md (à changer dès la première connexion !)
+ */
 
 const express = require("express");
 const fs = require("fs");
 const path = require("path");
 const crypto = require("crypto");
+const multer = require("multer");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -21,6 +22,8 @@ const DATA_DIR = path.join(__dirname, "data");
 const MENU_FILE = path.join(DATA_DIR, "menu.json");
 const INFO_FILE = path.join(DATA_DIR, "info.json");
 const ADMIN_FILE = path.join(DATA_DIR, "admin.json");
+const REVIEWS_FILE = path.join(DATA_DIR, "reviews.json");
+const UPLOADS_DIR = path.join(__dirname, "public", "uploads");
 
 const DEFAULT_PASSWORD = process.env.ADMIN_DEFAULT_PASSWORD || "afromeal2026";
 const SESSION_TTL_MS = 12 * 60 * 60 * 1000; // 12h
@@ -58,6 +61,20 @@ function ensureAdminFile() {
 }
 ensureAdminFile();
 
+function ensureUploadsDir() {
+  if (!fs.existsSync(UPLOADS_DIR)) {
+    fs.mkdirSync(UPLOADS_DIR, { recursive: true });
+  }
+}
+ensureUploadsDir();
+
+function ensureReviewsFile() {
+  if (!fs.existsSync(REVIEWS_FILE)) {
+    writeJSON(REVIEWS_FILE, { reviews: [] });
+  }
+}
+ensureReviewsFile();
+
 // ---------- Sessions admin (en mémoire, simple et suffisant pour 1 seul admin) ----------
 
 const sessions = new Map(); // token -> expiry timestamp
@@ -77,7 +94,7 @@ function requireAdmin(req, res, next) {
     return res.status(401).json({ error: "Non autorisé. Merci de vous reconnecter." });
   }
   // glisse l'expiration (session active = prolongée)
-sessions.set(token, Date.now() + SESSION_TTL_MS);
+  sessions.set(token, Date.now() + SESSION_TTL_MS);
   next();
 }
 
@@ -86,17 +103,57 @@ sessions.set(token, Date.now() + SESSION_TTL_MS);
 app.use(express.json());
 app.use(express.static(path.join(__dirname, "public")));
 
+// ---------- Upload de fichiers (photos / vidéos) ----------
+
+const ALLOWED_UPLOAD_TYPES = /\.(jpe?g|png|gif|webp|svg|mp4|webm|mov)$/i;
+
+const uploadStorage = multer.diskStorage({
+  destination: (req, file, cb) => cb(null, UPLOADS_DIR),
+  filename: (req, file, cb) => {
+    const ext = path.extname(file.originalname).toLowerCase();
+    const unique = crypto.randomBytes(8).toString("hex");
+    cb(null, `${Date.now()}-${unique}${ext}`);
+  },
+});
+
+const upload = multer({
+  storage: uploadStorage,
+  limits: { fileSize: 25 * 1024 * 1024 }, // 25 Mo (photos + courtes vidéos)
+  fileFilter: (req, file, cb) => {
+    if (!ALLOWED_UPLOAD_TYPES.test(file.originalname)) {
+      return cb(new Error("Type de fichier non autorisé. Formats acceptés : images (jpg, png, gif, webp, svg) ou vidéos (mp4, webm, mov)."));
+    }
+    cb(null, true);
+  },
+});
+
+app.post("/api/admin/upload", requireAdmin, (req, res) => {
+  upload.single("file")(req, res, (err) => {
+    if (err) {
+      return res.status(400).json({ error: err.message || "Échec du téléversement." });
+    }
+    if (!req.file) {
+      return res.status(400).json({ error: "Aucun fichier reçu." });
+    }
+    res.status(201).json({ url: `/uploads/${req.file.filename}` });
+  });
+});
+
 // ---------- API publique ----------
 
 app.get("/api/menu", (req, res) => {
   const menu = readJSON(MENU_FILE);
   // Le site public ne montre que les plats marqués disponibles
-        const items = menu.items.filter((i) => i.available !== false);
+  const items = menu.items.filter((i) => i.available !== false);
   res.json({ categories: menu.categories, items });
 });
 
 app.get("/api/info", (req, res) => {
   res.json(readJSON(INFO_FILE));
+});
+
+app.get("/api/reviews", (req, res) => {
+  res.json(readJSON(REVIEWS_FILE));
 });
 
 // ---------- Authentification admin ----------
@@ -105,7 +162,7 @@ app.post("/api/admin/login", (req, res) => {
   const { password } = req.body || {};
   if (!password) return res.status(400).json({ error: "Mot de passe requis." });
 
-         const admin = readJSON(ADMIN_FILE);
+  const admin = readJSON(ADMIN_FILE);
   if (!verifyPassword(password, admin.salt, admin.hash)) {
     return res.status(401).json({ error: "Mot de passe incorrect." });
   }
@@ -170,7 +227,7 @@ app.put("/api/admin/menu/items/:id", requireAdmin, (req, res) => {
   const item = menu.items.find((i) => i.id === req.params.id);
   if (!item) return res.status(404).json({ error: "Plat introuvable." });
 
-        const { category, name, description, price, available, image } = req.body || {};
+  const { category, name, description, price, available, image } = req.body || {};
   if (category) {
     if (!menu.categories.some((c) => c.id === category)) {
       return res.status(400).json({ error: "Catégorie inconnue." });
@@ -183,7 +240,7 @@ app.put("/api/admin/menu/items/:id", requireAdmin, (req, res) => {
   if (available !== undefined) item.available = !!available;
   if (image !== undefined) item.image = image;
 
-        writeJSON(MENU_FILE, menu);
+  writeJSON(MENU_FILE, menu);
   res.json(item);
 });
 
@@ -205,7 +262,7 @@ app.post("/api/admin/menu/categories", requireAdmin, (req, res) => {
     return res.status(400).json({ error: "Cette catégorie existe déjà." });
   }
   const order = menu.categories.length
-  ? Math.max(...menu.categories.map((c) => c.order)) + 1
+    ? Math.max(...menu.categories.map((c) => c.order)) + 1
     : 1;
   menu.categories.push({ id, name, order });
   writeJSON(MENU_FILE, menu);
@@ -219,6 +276,52 @@ app.delete("/api/admin/menu/categories/:id", requireAdmin, (req, res) => {
   }
   menu.categories = menu.categories.filter((c) => c.id !== req.params.id);
   writeJSON(MENU_FILE, menu);
+  res.json({ ok: true });
+});
+
+// ---------- Gestion des avis clients (protégé) ----------
+
+app.get("/api/admin/reviews", requireAdmin, (req, res) => {
+  res.json(readJSON(REVIEWS_FILE));
+});
+
+app.post("/api/admin/reviews", requireAdmin, (req, res) => {
+  const { author, text, rating } = req.body || {};
+  if (!author || !text) {
+    return res.status(400).json({ error: "Nom et texte de l'avis requis." });
+  }
+  const data = readJSON(REVIEWS_FILE);
+  const review = {
+    id: crypto.randomBytes(6).toString("hex"),
+    author,
+    text,
+    rating: rating ? Math.max(1, Math.min(5, Number(rating))) : 5,
+  };
+  data.reviews.push(review);
+  writeJSON(REVIEWS_FILE, data);
+  res.status(201).json(review);
+});
+
+app.put("/api/admin/reviews/:id", requireAdmin, (req, res) => {
+  const data = readJSON(REVIEWS_FILE);
+  const review = data.reviews.find((r) => r.id === req.params.id);
+  if (!review) return res.status(404).json({ error: "Avis introuvable." });
+
+  const { author, text, rating } = req.body || {};
+  if (author !== undefined) review.author = author;
+  if (text !== undefined) review.text = text;
+  if (rating !== undefined) review.rating = Math.max(1, Math.min(5, Number(rating) || 5));
+
+  writeJSON(REVIEWS_FILE, data);
+  res.json(review);
+});
+
+app.delete("/api/admin/reviews/:id", requireAdmin, (req, res) => {
+  const data = readJSON(REVIEWS_FILE);
+  const idx = data.reviews.findIndex((r) => r.id === req.params.id);
+  if (idx === -1) return res.status(404).json({ error: "Avis introuvable." });
+  data.reviews.splice(idx, 1);
+  writeJSON(REVIEWS_FILE, data);
   res.json({ ok: true });
 });
 
