@@ -105,26 +105,30 @@ async function loadMenu() {
         (c) => `
       <div class="menu-category" data-cat-section="${c.id}" style="${c === visibleCategories[0] ? "" : "display:none;"}">
         <h3>${c.name}</h3>
-        <div class="menu-items">
+        <div class="card-grid">
           ${itemsByCategory[c.id]
             .map(
               (item) => `
-            <div class="menu-item">
-              ${item.image ? `<img class="menu-item-thumb" src="${attrHTML(item.image)}" alt="" loading="lazy" />` : ""}
-              <div class="menu-item-main">
+            <div class="card">
+              <div class="card-photo">
+                ${item.image
+                  ? `<img src="${attrHTML(item.image)}" alt="" loading="lazy" />`
+                  : `<svg viewBox="0 0 24 24"><use href="#d-plate"/></svg>`}
+                <span class="price-badge">${escapeHTML(item.price)}</span>
+              </div>
+              <div class="card-body">
                 <h4>${escapeHTML(item.name)}</h4>
                 ${item.description ? `<p>${escapeHTML(item.description)}</p>` : ""}
-              </div>
-              <div class="menu-item-right">
-                <div class="price">${escapeHTML(item.price)}</div>
-                <div class="qty-stepper" data-item-id="${item.id}">
-                  <button type="button" class="qty-btn minus" aria-label="Retirer un ${attrHTML(item.name)}">
-                    <svg viewBox="0 0 24 24"><use href="#i-minus"/></svg>
-                  </button>
-                  <span class="qty-value">0</span>
-                  <button type="button" class="qty-btn plus" aria-label="Ajouter un ${attrHTML(item.name)}">
-                    <svg viewBox="0 0 24 24"><use href="#i-plus"/></svg>
-                  </button>
+                <div class="card-footer">
+                  <div class="qty-stepper" data-item-id="${item.id}">
+                    <button type="button" class="qty-btn minus" aria-label="Retirer un ${attrHTML(item.name)}">
+                      <svg viewBox="0 0 24 24"><use href="#i-minus"/></svg>
+                    </button>
+                    <span class="qty-value">0</span>
+                    <button type="button" class="qty-btn plus" aria-label="Ajouter un ${attrHTML(item.name)}">
+                      <svg viewBox="0 0 24 24"><use href="#i-plus"/></svg>
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>`
