@@ -7,12 +7,22 @@
   "phone": "09 55 97 81 76",
   "instagram": "https://www.instagram.com/afromeal/",
   "whatsapp": "",
+  "logo": "",
   "coverImage": "",
   "halal": true,
   "hours": [
-    { "days": "Mardi – Vendredi", "times": "11h30 – 14h00  /  18h30 – 23h00" },
-    { "days": "Samedi – Dimanche", "times": "18h30 – 23h00" },
-    { "days": "Lundi", "times": "Fermé" }
+    {
+      "days": "Mardi – Vendredi",
+      "times": "11h30 – 14h00  /  18h30 – 23h00"
+    },
+    {
+      "days": "Samedi – Dimanche",
+      "times": "18h30 – 23h00"
+    },
+    {
+      "days": "Lundi",
+      "times": "Fermé"
+    }
   ],
   "highlight": "🎤 AfroMeal a reçu la visite du rappeur américain Swae Lee, qui a adoré nos plats pleins de saveurs !"
 }

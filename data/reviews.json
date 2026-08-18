@@ -1,0 +1,10 @@
+{
+  "reviews": [
+    {
+      "id": "rev1",
+      "author": "Visite de Swae Lee",
+      "text": "Le rappeur américain Swae Lee, partenaire de French Montana dans « Unforgettable », a adoré nos plats pleins de saveurs !",
+      "rating": 5
+    }
+  ]
+}
