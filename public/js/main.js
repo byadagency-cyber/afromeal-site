@@ -49,7 +49,7 @@ async function loadInfo() {
     }
     if (info.logo) {
       const logoImgHTML = `<img src="${attrHTML(info.logo)}" alt="AfroMeal" class="custom-logo-img" />`;
-      ["headerLogoBadge", "heroLogoBadge", "footerLogoBadge", "mapLogoBadge"].forEach((id) => {
+      ["headerLogoBadge", "footerLogoBadge", "mapLogoBadge"].forEach((id) => {
         const el = document.getElementById(id);
         if (el) el.innerHTML = logoImgHTML;
       });

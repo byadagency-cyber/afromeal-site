@@ -224,7 +224,16 @@ function wireUploadButtons(scopeEl) {
         showToast("Envoi de la photo…");
         const url = await uploadFile(file);
         textInput.value = url;
-        showToast("Photo envoyée ✅");
+        // Pour un plat déjà existant, on enregistre tout de suite : pas besoin
+        // de cliquer sur « Enregistrer » en plus, ça évite d'oublier cette étape.
+        const row = fileInput.closest(".item-row");
+        const saveBtn = row ? row.querySelector("[data-save]") : null;
+        if (saveBtn) {
+          showToast("Photo envoyée, enregistrement…");
+          saveBtn.click();
+        } else {
+          showToast("Photo envoyée ✅");
+        }
       } catch (err) {
         showToast(err.message, true);
       }
@@ -390,17 +399,26 @@ document.getElementById("logoFile").addEventListener("change", async (e) => {
     const url = await uploadFile(file);
     document.getElementById("infoLogo").value = url;
     renderUploadPreview(document.getElementById("logoPreview"), url, "Aucun logo");
-    statusEl.textContent = "Fichier envoyé ✅ — cliquez sur « Enregistrer les informations » pour valider.";
+    await apiFetch("/api/admin/info", { method: "PUT", body: JSON.stringify({ logo: url }) });
+    statusEl.textContent = "Logo envoyé et enregistré ✅";
+    showToast("Logo mis à jour ✅");
   } catch (err) {
     statusEl.textContent = err.message;
   }
 });
 
-document.getElementById("logoRemoveBtn").addEventListener("click", () => {
+document.getElementById("logoRemoveBtn").addEventListener("click", async () => {
   document.getElementById("infoLogo").value = "";
   document.getElementById("logoFile").value = "";
-  document.getElementById("logoUploadStatus").textContent = "";
   renderUploadPreview(document.getElementById("logoPreview"), "", "Aucun logo");
+  const statusEl = document.getElementById("logoUploadStatus");
+  try {
+    await apiFetch("/api/admin/info", { method: "PUT", body: JSON.stringify({ logo: "" }) });
+    statusEl.textContent = "Logo retiré ✅";
+    showToast("Logo retiré ✅");
+  } catch (err) {
+    statusEl.textContent = err.message;
+  }
 });
 
 document.getElementById("coverFile").addEventListener("change", async (e) => {
@@ -412,17 +430,26 @@ document.getElementById("coverFile").addEventListener("change", async (e) => {
     const url = await uploadFile(file);
     document.getElementById("infoCoverImage").value = url;
     renderUploadPreview(document.getElementById("coverPreview"), url, "Aucun fichier");
-    statusEl.textContent = "Fichier envoyé ✅ — cliquez sur « Enregistrer les informations » pour valider.";
+    await apiFetch("/api/admin/info", { method: "PUT", body: JSON.stringify({ coverImage: url }) });
+    statusEl.textContent = "Fichier envoyé et enregistré ✅";
+    showToast("Couverture mise à jour ✅");
   } catch (err) {
     statusEl.textContent = err.message;
   }
 });
 
-document.getElementById("coverRemoveBtn").addEventListener("click", () => {
+document.getElementById("coverRemoveBtn").addEventListener("click", async () => {
   document.getElementById("infoCoverImage").value = "";
   document.getElementById("coverFile").value = "";
-  document.getElementById("coverUploadStatus").textContent = "";
   renderUploadPreview(document.getElementById("coverPreview"), "", "Aucun fichier");
+  const statusEl = document.getElementById("coverUploadStatus");
+  try {
+    await apiFetch("/api/admin/info", { method: "PUT", body: JSON.stringify({ coverImage: "" }) });
+    statusEl.textContent = "Couverture retirée ✅";
+    showToast("Couverture retirée ✅");
+  } catch (err) {
+    statusEl.textContent = err.message;
+  }
 });
 
 document.getElementById("infoCoverImage").addEventListener("input", (e) => {
