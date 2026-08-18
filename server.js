@@ -18,12 +18,17 @@ const multer = require("multer");
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-const DATA_DIR = path.join(__dirname, "data");
+// Si un Volume persistant Railway est attaché (variable fournie automatiquement
+// par Railway), les données et fichiers envoyés y sont stockés afin de survivre
+// aux redéploiements. Sinon (développement local), on utilise les dossiers du repo.
+const VOLUME_ROOT = process.env.RAILWAY_VOLUME_MOUNT_PATH || null;
+const SEED_DATA_DIR = path.join(__dirname, "data");
+const DATA_DIR = VOLUME_ROOT ? path.join(VOLUME_ROOT, "data") : SEED_DATA_DIR;
 const MENU_FILE = path.join(DATA_DIR, "menu.json");
 const INFO_FILE = path.join(DATA_DIR, "info.json");
 const ADMIN_FILE = path.join(DATA_DIR, "admin.json");
 const REVIEWS_FILE = path.join(DATA_DIR, "reviews.json");
-const UPLOADS_DIR = path.join(__dirname, "public", "uploads");
+const UPLOADS_DIR = VOLUME_ROOT ? path.join(VOLUME_ROOT, "uploads") : path.join(__dirname, "public", "uploads");
 
 const DEFAULT_PASSWORD = process.env.ADMIN_DEFAULT_PASSWORD || "afromeal2026";
 const SESSION_TTL_MS = 12 * 60 * 60 * 1000; // 12h
@@ -47,6 +52,24 @@ function verifyPassword(password, salt, hash) {
   const check = crypto.scryptSync(password, salt, 64).toString("hex");
   return crypto.timingSafeEqual(Buffer.from(check, "hex"), Buffer.from(hash, "hex"));
 }
+
+function ensureDataDir() {
+  if (!fs.existsSync(DATA_DIR)) {
+    fs.mkdirSync(DATA_DIR, { recursive: true });
+  }
+  // Première utilisation d'un Volume tout neuf : on le pré-remplit avec les
+  // données par défaut du dépôt (menu, infos, avis), une seule fois.
+  if (VOLUME_ROOT) {
+    ["menu.json", "info.json", "reviews.json"].forEach((file) => {
+      const dest = path.join(DATA_DIR, file);
+      const src = path.join(SEED_DATA_DIR, file);
+      if (!fs.existsSync(dest) && fs.existsSync(src)) {
+        fs.copyFileSync(src, dest);
+      }
+    });
+  }
+}
+ensureDataDir();
 
 function ensureAdminFile() {
   if (!fs.existsSync(ADMIN_FILE)) {
@@ -101,6 +124,7 @@ function requireAdmin(req, res, next) {
 // ---------- Middleware ----------
 
 app.use(express.json());
+app.use("/uploads", express.static(UPLOADS_DIR));
 app.use(express.static(path.join(__dirname, "public")));
 
 // ---------- Upload de fichiers (photos / vidéos) ----------
