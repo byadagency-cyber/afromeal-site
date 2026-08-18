@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>AfroMeal — Cuisine Afro-Fusion à Nice</title>
+<meta name="description" content="AfroMeal, restaurant de cuisine afro-caribéenne à Nice. Poulet braisé, mafé, yassa, dibi grillé au charbon de bois. Sur place ou à emporter." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<div class="grain"></div>
+<div class="kente-strip"></div>
+
+<!-- Sprite d'icônes (masqué) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-chef" viewBox="0 0 24 24"><path d="M12 3c-2.2 0-4 1.6-4 3.6 0 .7.2 1.3.5 1.9C7.1 9 6 10.6 6 12.5c0 .4.3.7.7.7h10.6c.4 0 .7-.3.7-.7 0-1.9-1.1-3.5-2.5-4C15.8 8.1 16 7.5 16 6.6 16 4.6 14.2 3 12 3z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><line x1="7" y1="16" x2="17" y2="21" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><line x1="17" y1="16" x2="7" y2="21" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></symbol>
+
+    <symbol id="i-spice" viewBox="0 0 24 24"><path d="M9 8c-2.5 1-4 3.4-4 6.2C5 17.9 7.7 20 11 20s6-2.1 6-5.8c0-1.7-.6-3-1.5-4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M9 8c0-2 1.2-3.6 3-4.8.4 1.6 1.4 2 2.4 2.6C15.6 6.6 16 7.7 16 9" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+
+    <symbol id="i-fire" viewBox="0 0 24 24"><path d="M12 3c1 3-3 4-3 7.5A3.5 3.5 0 0 0 12 14a3.5 3.5 0 0 0 3-5.3C16.5 10 18 11.4 18 14a6 6 0 1 1-12 0c0-4 3-5 3-8 1 .5 1.5 1.5 3 1z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></symbol>
+
+    <symbol id="i-bag" viewBox="0 0 24 24"><path d="M6 8h12l1 12H5L6 8Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M9 8V6a3 3 0 0 1 6 0v2" fill="none" stroke="currentColor" stroke-width="1.5"/></symbol>
+
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s7-6.1 7-11.5A7 7 0 0 0 5 9.5C5 14.9 12 21 12 21Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><circle cx="12" cy="9.5" r="2.4" fill="none" stroke="currentColor" stroke-width="1.5"/></symbol>
+
+    <symbol id="i-phone" viewBox="0 0 24 24"><path d="M7 3.5h3l1.5 4L9.5 9c.8 2 2.5 3.7 4.5 4.5l1.5-2 4 1.5v3c0 1-.9 1.8-1.9 1.6-6-1-10.7-5.7-11.7-11.7C5.2 4.4 6 3.5 7 3.5Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></symbol>
+
+    <symbol id="i-insta" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="5" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="12" r="3.6" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="16.6" cy="7.4" r="1" fill="currentColor"/></symbol>
+
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M12 7.5V12l3 2" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+
+    <!-- Icônes plats -->
+    <symbol id="d-drumstick" viewBox="0 0 24 24"><path d="M14.8 13.2c2.6-2.6 2.8-6.3.9-8.7-2.4-1.9-6.1-1.7-8.7.9-2.6 2.6-3 6.6-.9 8.7 2.1 2.1 6.1 1.7 8.7-.9Z" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><path d="M8.6 15.7 5 19.3a1.9 1.9 0 1 0 2.7 2.7l3.6-3.6" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><path d="M6 21 3.3 18.3" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/></symbol>
+
+    <symbol id="d-bowl" viewBox="0 0 24 24"><path d="M4 12h16c0 4.4-3.6 8-8 8s-8-3.6-8-8Z" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><path d="M8 12c0-1.8 1.8-3 4-3s4 1.2 4 3" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><line x1="3" y1="12" x2="21" y2="12" stroke="currentColor" stroke-width="1.3"/></symbol>
+
+    <symbol id="d-plate" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="1.3"/><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="1.1" opacity=".7"/></symbol>
+
+    <symbol id="d-fish" viewBox="0 0 24 24"><path d="M3 12c3-4 8-6 12-4 2 1 4 2.5 6 2-1.5 2-1.5 6 0 8-2-.5-4-1-6 0-4 2-9 0-12-4Z" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><circle cx="8" cy="11" r=".8" fill="currentColor"/></symbol>
+
+    <symbol id="d-shrimp" viewBox="0 0 24 24"><path d="M6 6c5-2 12 1 13 8 .4 3-1.5 6-4.5 6.5C11 21 8 19 7.5 15.5" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><path d="M6 6C4 8 4 11 6 13" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><line x1="7" y1="9" x2="4.5" y2="8" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/><line x1="7.5" y1="12" x2="5" y2="11.5" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/></symbol>
+
+    <symbol id="d-skewer" viewBox="0 0 24 24"><line x1="3" y1="21" x2="21" y2="3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><circle cx="9" cy="15" r="2.3" fill="none" stroke="currentColor" stroke-width="1.3"/><circle cx="14" cy="10" r="2.3" fill="none" stroke="currentColor" stroke-width="1.3"/></symbol>
+
+    <symbol id="d-wrap" viewBox="0 0 24 24"><path d="M8 4c6 0 10 4 10 10-4 0-8-1-10-4-2 3-6 4-10 4C-2 8 2 4 8 4Z" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round" transform="translate(4 0)"/></symbol>
+
+    <symbol id="d-cup" viewBox="0 0 24 24"><path d="M7 8h10l-1 11a2 2 0 0 1-2 1.8H10A2 2 0 0 1 8 19L7 8Z" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><line x1="6" y1="8" x2="18" y2="8" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><path d="M9.5 11.5c1 .8 1 1.8 0 2.6" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" opacity=".7"/></symbol>
+
+    <symbol id="i-cart" viewBox="0 0 24 24"><path d="M3 4h2l2.4 12.2A2 2 0 0 0 9.36 18H18a2 2 0 0 0 1.96-1.6L21.5 8H6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="10" cy="21" r="1.4" fill="currentColor"/><circle cx="18" cy="21" r="1.4" fill="currentColor"/></symbol>
+
+    <symbol id="i-whatsapp" viewBox="0 0 24 24"><path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.6-1.2A9 9 0 1 0 12 3Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M8.3 8.6c-.2.9 0 2 1.3 3.6 1.3 1.6 2.4 2.2 3.4 2.4.9.2 1.6-.3 1.9-.9l.3-.6-1.8-1-.5.7c-.1.2-.4.2-.6.1-.6-.3-1.4-1-1.9-1.7-.1-.2-.1-.4.1-.6l.5-.6-.9-1.9-.6.2c-.4.2-.9.7-1.2 1.3Z" fill="currentColor"/></symbol>
+
+    <symbol id="i-plus" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="5" y1="12" x2="19" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+
+    <symbol id="i-minus" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+
+    <symbol id="i-trash" viewBox="0 0 24 24"><path d="M4 7h16M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2m-9 0 1 13a2 2 0 0 0 2 1.8h4A2 2 0 0 0 17 20l1-13" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+
+    <symbol id="i-x" viewBox="0 0 24 24"><line x1="6" y1="6" x2="18" y2="18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><line x1="18" y1="6" x2="6" y2="18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+  </defs>
+</svg>
+
+<header class="site-header">
+  <nav class="nav">
+    <a class="logo-lockup" href="#top">
+      <span class="logo-badge" id="headerLogoBadge"><span class="inner"><svg viewBox="0 0 24 24" style="color:var(--green)"><use href="#i-chef"/></svg></span></span>
+      <span class="wordmark"><span class="afro">Afro</span><span class="meal">Meal</span></span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about">À propos</a></li>
+      <li><a href="#menu">Notre carte</a></li>
+      <li><a href="#contact">Infos &amp; Contact</a></li>
+    </ul>
+    <a class="nav-cta" href="tel:0955978176">Réserver</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Menu">☰</button>
+  </nav>
+</header>
+
+<section class="hero" id="top">
+  <div class="hero-glow" aria-hidden="true"></div>
+  <div class="hero-cover-photo" id="heroCoverPhoto" aria-hidden="true"></div>
+  <div class="hero-inner">
+    <div class="reveal in-view">
+      <span class="eyebrow">Nice · Cuisine Afro&#8209;Caribéenne</span>
+      <h1>Des saveurs d&rsquo;Afrique <span class="accent">et des Caraïbes</span>, sur votre table</h1>
+      <p class="lead" id="heroIntro">Saveurs authentiques d&rsquo;Afrique et des Caraïbes, préparées avec passion, au cœur de Nice&nbsp;&mdash; sur place ou à emporter.</p>
+      <div class="hero-badges">
+        <span class="badge">Fait maison</span>
+        <span class="badge">Grillé au charbon de bois</span>
+        <span class="badge">Halal</span>
+      </div>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#menu">Voir la carte</a>
+        <a class="btn btn-ghost" href="https://www.instagram.com/afromeal/" target="_blank" rel="noopener">
+          <svg width="16" height="16" style="stroke:currentColor"><use href="#i-insta"/></svg>
+          Suivre sur Instagram
+        </a>
+      </div>
+    </div>
+    <div class="hero-visual reveal in-view" style="--delay:.15s">
+      <div class="ring-decoration" aria-hidden="true"></div>
+      <span class="logo-badge lg" id="heroLogoBadge">
+        <span class="inner">
+          <svg viewBox="0 0 24 24" style="color:var(--green)"><use href="#i-chef"/></svg>
+        </span>
+      </span>
+      <span class="badge-caption">Cuisine Afro&#8209;Fusion</span>
+    </div>
+  </div>
+</section>
+
+<div class="highlight-bar" id="highlightBar">
+  🎤 AfroMeal a reçu la visite du rappeur américain <strong>Swae Lee</strong>, qui a adoré nos plats pleins de saveurs&nbsp;!
+</div>
+
+<section id="about">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Notre histoire</span>
+      <h2>Une cuisine généreuse, entre Afrique et Caraïbes</h2>
+      <p>Chez AfroMeal, chaque plat est préparé avec des épices authentiques, des produits frais et beaucoup d&rsquo;amour — pour vous faire voyager à chaque bouchée.</p>
+    </div>
+    <div class="about-grid">
+      <div class="about-card reveal" style="--delay:0s">
+        <div class="icon"><svg viewBox="0 0 24 24"><use href="#i-spice"/></svg></div>
+        <h3>Épices authentiques</h3>
+        <p>Des recettes traditionnelles d&rsquo;Afrique de l&rsquo;Ouest et des Caraïbes, respectueuses des saveurs d&rsquo;origine.</p>
+      </div>
+      <div class="about-card reveal" style="--delay:.1s">
+        <div class="icon"><svg viewBox="0 0 24 24"><use href="#i-fire"/></svg></div>
+        <h3>Grillades au charbon</h3>
+        <p>Nos viandes «&nbsp;Dib&rsquo;s&nbsp;» sont grillées au charbon de bois pour un goût fumé incomparable.</p>
+      </div>
+      <div class="about-card reveal" style="--delay:.2s">
+        <div class="icon"><svg viewBox="0 0 24 24"><use href="#i-bag"/></svg></div>
+        <h3>Sur place ou à emporter</h3>
+        <p>Profitez de nos plats en salle ou emportez-les — toujours préparés à la commande.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="menu">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Notre carte</span>
+      <h2>Le menu AfroMeal</h2>
+      <p>Mis à jour directement par le restaurant.</p>
+    </div>
+    <div class="menu-tabs" id="menuTabs"></div>
+    <div id="menuContent">
+      <p class="menu-loading">Chargement de la carte&hellip;</p>
+    </div>
+  </div>
+</section>
+
+<section class="social-proof" id="socialProof" style="display:none;">
+  <div class="container">
+    <div id="reviewsList"></div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Infos pratiques</span>
+      <h2>Où et quand nous trouver</h2>
+    </div>
+    <div class="contact-grid">
+      <div class="info-card reveal">
+        <div class="info-row">
+          <div class="ic"><svg viewBox="0 0 24 24"><use href="#i-pin"/></svg></div>
+          <div>
+            <h4>Adresse</h4>
+            <p id="infoAddress">30 rue Caffarelli, 06000 Nice</p>
+          </div>
+        </div>
+        <div class="info-row">
+          <div class="ic"><svg viewBox="0 0 24 24"><use href="#i-phone"/></svg></div>
+          <div>
+            <h4>Téléphone</h4>
+            <p><a id="infoPhone" href="tel:0955978176">09 55 97 81 76</a></p>
+          </div>
+        </div>
+        <div class="info-row">
+          <div class="ic"><svg viewBox="0 0 24 24"><use href="#i-insta"/></svg></div>
+          <div>
+            <h4>Instagram</h4>
+            <p><a id="infoInstagram" href="https://www.instagram.com/afromeal/" target="_blank" rel="noopener">@afromeal</a></p>
+          </div>
+        </div>
+        <div class="info-row">
+          <div class="ic"><svg viewBox="0 0 24 24"><use href="#i-clock"/></svg></div>
+          <div style="width:100%;">
+            <h4>Horaires</h4>
+            <table class="hours-table" id="hoursTable"></table>
+          </div>
+        </div>
+      </div>
+      <div class="map-placeholder reveal" style="--delay:.1s">
+        <div>
+          <span class="logo-badge" id="mapLogoBadge" style="--size:56px; margin:0 auto 18px; display:block;"><span class="inner"><svg viewBox="0 0 24 24" style="color:var(--green)"><use href="#i-chef"/></svg></span></span>
+          <h3 style="color:#fff;">AfroMeal</h3>
+          <p style="color:var(--text-muted)">30 rue Caffarelli, 06000 Nice</p>
+          <p><a href="https://www.google.com/maps/search/?api=1&query=30+rue+Caffarelli+06000+Nice" target="_blank" rel="noopener">Ouvrir dans Google Maps →</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="logo-lockup" style="margin-bottom:10px;">
+        <span class="logo-badge" id="footerLogoBadge"><span class="inner"><svg viewBox="0 0 24 24" style="color:var(--green)"><use href="#i-chef"/></svg></span></span>
+        <span class="wordmark"><span class="afro">Afro</span><span class="meal">Meal</span></span>
+      </div>
+      <p style="max-width:320px;">Cuisine afro-fusion à Nice — saveurs d&rsquo;Afrique et des Caraïbes, sur place ou à emporter.</p>
+    </div>
+    <div>
+      <h3>Suivez-nous</h3>
+      <ul class="footer-links">
+        <li><a href="https://www.instagram.com/afromeal/" target="_blank" rel="noopener">Instagram</a></li>
+        <li><a href="tel:0955978176">Téléphone</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© <span id="year"></span> AfroMeal — Tous droits réservés.</span>
+    <a href="/admin.html">Espace restaurateur</a>
+  </div>
+</footer>
+
+<!-- Panier -->
+<button class="cart-fab" id="cartFab" aria-label="Voir le panier">
+  <svg viewBox="0 0 24 24"><use href="#i-cart"/></svg>
+  <span class="cart-fab-count" id="cartFabCount" style="display:none;">0</span>
+</button>
+
+<div class="cart-overlay" id="cartOverlay"></div>
+<aside class="cart-drawer" id="cartDrawer" aria-label="Panier">
+  <div class="cart-drawer-head">
+    <h3>Votre panier</h3>
+    <button class="cart-close" id="cartCloseBtn" aria-label="Fermer le panier"><svg viewBox="0 0 24 24"><use href="#i-x"/></svg></button>
+  </div>
+  <div class="cart-items" id="cartItems">
+    <p class="cart-empty">Votre panier est vide. Ajoutez des plats depuis la carte&nbsp;!</p>
+  </div>
+  <div class="cart-footer" id="cartFooter" style="display:none;">
+    <div class="cart-total-row">
+      <span>Total</span>
+      <span class="cart-total" id="cartTotal">0,00 €</span>
+    </div>
+    <a class="btn btn-primary cart-whatsapp-btn" id="cartWhatsappBtn" target="_blank" rel="noopener">
+      <svg width="18" height="18" style="stroke:none;"><use href="#i-whatsapp"/></svg>
+      Commander via WhatsApp
+    </a>
+    <p class="cart-note" id="cartWhatsappNote" style="display:none;">La commande par WhatsApp n&rsquo;est pas encore activée &mdash; contactez-nous par téléphone.</p>
+  </div>
+</aside>
+
+<script src="js/main.js"></script>
+</body>
+</html>
