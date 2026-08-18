@@ -170,6 +170,56 @@ label { display: block; text-align: left; font-size: .82rem; font-weight: 600; m
 
 .hours-row { display: grid; grid-template-columns: 1fr 1fr auto; gap: 10px; margin-bottom: 10px; align-items: center; }
 
+/* Upload de fichiers (logo, couverture) */
+.upload-field { display: flex; gap: 16px; align-items: flex-start; margin-bottom: 4px; }
+.upload-preview {
+  width: 92px; height: 92px; flex-shrink: 0;
+  border-radius: 10px;
+  border: 1.5px dashed var(--border);
+  background: #faf6ee;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--text-muted);
+  font-size: .72rem;
+  text-align: center;
+  overflow: hidden;
+  padding: 4px;
+}
+.upload-preview img, .upload-preview video { width: 100%; height: 100%; object-fit: cover; border-radius: 8px; }
+.upload-controls { flex: 1; }
+.upload-controls input[type="file"] { padding: 8px; font-size: .82rem; }
+.upload-status { font-size: .78rem; color: var(--green-dark); margin: 6px 0 0; min-height: 16px; }
+
+/* Champ photo dans la carte (URL + bouton d'upload) */
+.photo-field { display: flex; gap: 6px; align-items: center; }
+.photo-field input:not([type="file"]) { flex: 1; }
+.upload-btn-sm {
+  cursor: pointer;
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  padding: 8px 10px;
+  background: #fff;
+  font-size: .95rem;
+  flex-shrink: 0;
+}
+.upload-btn-sm:hover { border-color: var(--terracotta); }
+
+/* Avis clients */
+.review-row {
+  background: #fff;
+  border-radius: var(--radius);
+  padding: 16px 20px;
+  margin-bottom: 12px;
+  box-shadow: 0 8px 22px rgba(27,23,18,.06);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 14px;
+}
+.review-row-main { flex: 1; }
+.review-row-main strong { color: var(--green-dark); }
+.review-row-stars { color: var(--gold); margin-left: 8px; font-size: .85rem; }
+.review-row-main p { margin: 6px 0 0; font-size: .9rem; color: var(--charcoal); }
+
 .toast {
   position: fixed; bottom: 24px; right: 24px;
   background: var(--green-dark); color: #fff;
