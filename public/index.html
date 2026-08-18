@@ -67,7 +67,7 @@
 <header class="site-header">
   <nav class="nav">
     <a class="logo-lockup" href="#top">
-      <span class="logo-badge"><span class="inner"><svg viewBox="0 0 24 24" style="color:var(--green)"><use href="#i-chef"/></svg></span></span>
+      <span class="logo-badge" id="headerLogoBadge"><span class="inner"><svg viewBox="0 0 24 24" style="color:var(--green)"><use href="#i-chef"/></svg></span></span>
       <span class="wordmark"><span class="afro">Afro</span><span class="meal">Meal</span></span>
     </a>
     <ul class="nav-links" id="navLinks">
@@ -104,7 +104,7 @@
     </div>
     <div class="hero-visual reveal in-view" style="--delay:.15s">
       <div class="ring-decoration" aria-hidden="true"></div>
-      <span class="logo-badge lg">
+      <span class="logo-badge lg" id="heroLogoBadge">
         <span class="inner">
           <svg viewBox="0 0 24 24" style="color:var(--green)"><use href="#i-chef"/></svg>
         </span>
@@ -179,11 +179,9 @@
   </div>
 </section>
 
-<section class="social-proof">
-  <div class="container reveal">
-    <div class="stars">★★★★★</div>
-    <p class="quote">&laquo;&nbsp;C&rsquo;est le partenaire de French Montana dans « Unforgettable »&nbsp;! Lui et sa team ont vraiment apprécié nos plats pleins de saveurs&nbsp;!&nbsp;&raquo;</p>
-    <p class="attribution">— à propos de la visite de Swae Lee chez AfroMeal</p>
+<section class="social-proof" id="socialProof" style="display:none;">
+  <div class="container">
+    <div id="reviewsList"></div>
   </div>
 </section>
 
@@ -226,7 +224,7 @@
       </div>
       <div class="map-placeholder reveal" style="--delay:.1s">
         <div>
-          <span class="logo-badge" style="--size:56px; margin:0 auto 18px; display:block;"><span class="inner"><svg viewBox="0 0 24 24" style="color:var(--green)"><use href="#i-chef"/></svg></span></span>
+          <span class="logo-badge" id="mapLogoBadge" style="--size:56px; margin:0 auto 18px; display:block;"><span class="inner"><svg viewBox="0 0 24 24" style="color:var(--green)"><use href="#i-chef"/></svg></span></span>
           <h3 style="color:#fff;">AfroMeal</h3>
           <p style="color:var(--text-muted)">30 rue Caffarelli, 06000 Nice</p>
           <p><a href="https://www.google.com/maps/search/?api=1&query=30+rue+Caffarelli+06000+Nice" target="_blank" rel="noopener">Ouvrir dans Google Maps →</a></p>
@@ -240,7 +238,7 @@
   <div class="footer-grid">
     <div>
       <div class="logo-lockup" style="margin-bottom:10px;">
-        <span class="logo-badge"><span class="inner"><svg viewBox="0 0 24 24" style="color:var(--green)"><use href="#i-chef"/></svg></span></span>
+        <span class="logo-badge" id="footerLogoBadge"><span class="inner"><svg viewBox="0 0 24 24" style="color:var(--green)"><use href="#i-chef"/></svg></span></span>
         <span class="wordmark"><span class="afro">Afro</span><span class="meal">Meal</span></span>
       </div>
       <p style="max-width:320px;">Cuisine afro-fusion à Nice — saveurs d&rsquo;Afrique et des Caraïbes, sur place ou à emporter.</p>

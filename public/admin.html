@@ -33,6 +33,7 @@
     <nav>
       <button class="nav-btn active" data-panel="menuPanel">🍲 Menu</button>
       <button class="nav-btn" data-panel="infoPanel">📍 Infos du restaurant</button>
+      <button class="nav-btn" data-panel="reviewsPanel">⭐ Avis clients</button>
       <button class="nav-btn" data-panel="securityPanel">🔒 Sécurité</button>
     </nav>
     <a class="view-site" href="/" target="_blank" rel="noopener">Voir le site public →</a>
@@ -74,8 +75,27 @@
         <label for="infoWhatsapp">Numéro WhatsApp pour les commandes (avec indicatif, ex : +33612345678)</label>
         <input id="infoWhatsapp" name="whatsapp" placeholder="+33612345678" />
 
-        <label for="infoCoverImage">Photo de couverture (URL, affichée en fond de la page d'accueil)</label>
-        <input id="infoCoverImage" name="coverImage" placeholder="https://..." />
+        <label for="logoFile">Logo du restaurant</label>
+        <div class="upload-field">
+          <div class="upload-preview" id="logoPreview">Aucun logo</div>
+          <div class="upload-controls">
+            <input type="file" id="logoFile" accept="image/*" />
+            <button type="button" class="btn btn-outline btn-sm" id="logoRemoveBtn">Retirer le logo</button>
+            <p class="upload-status" id="logoUploadStatus"></p>
+          </div>
+        </div>
+        <input type="hidden" id="infoLogo" name="logo" />
+
+        <label for="coverFile">Photo ou vidéo de couverture (haut de la page d'accueil)</label>
+        <div class="upload-field">
+          <div class="upload-preview" id="coverPreview">Aucun fichier</div>
+          <div class="upload-controls">
+            <input type="file" id="coverFile" accept="image/*,video/mp4,video/webm,video/quicktime" />
+            <button type="button" class="btn btn-outline btn-sm" id="coverRemoveBtn">Retirer</button>
+            <p class="upload-status" id="coverUploadStatus"></p>
+            <input id="infoCoverImage" name="coverImage" placeholder="ou collez une URL directement" style="margin-top:8px;" />
+          </div>
+        </div>
 
         <label for="infoHighlight">Bandeau d'actualité (mis en avant en haut du site)</label>
         <textarea id="infoHighlight" name="highlight" rows="2"></textarea>
@@ -87,6 +107,28 @@
         <button type="submit" class="btn btn-primary">Enregistrer les informations</button>
         <p class="success-msg" id="infoSuccess"></p>
         <p class="error-msg" id="infoError"></p>
+      </form>
+    </section>
+
+    <!-- Panel: Avis clients -->
+    <section class="panel" id="reviewsPanel">
+      <h2>Avis clients</h2>
+      <p class="subtitle">Les avis ajoutés ici s'affichent sur la page d'accueil du site. S'il n'y a aucun avis, la section reste masquée.</p>
+      <div id="reviewsListAdmin"><p>Chargement…</p></div>
+      <form class="card" id="addReviewForm" style="margin-top:24px;">
+        <h3 style="margin-top:0;">Ajouter un avis</h3>
+        <label for="reviewAuthor">Auteur / titre de l'avis</label>
+        <input id="reviewAuthor" name="author" placeholder="Ex : Visite de Swae Lee" required />
+
+        <label for="reviewText">Texte de l'avis</label>
+        <textarea id="reviewText" name="text" rows="3" required></textarea>
+
+        <label for="reviewRating">Note (1 à 5 étoiles)</label>
+        <input id="reviewRating" name="rating" type="number" min="1" max="5" value="5" />
+
+        <button type="submit" class="btn btn-primary">Ajouter l'avis</button>
+        <p class="success-msg" id="reviewSuccess"></p>
+        <p class="error-msg" id="reviewError"></p>
       </form>
     </section>
 
