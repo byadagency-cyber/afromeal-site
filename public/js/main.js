@@ -114,6 +114,7 @@ async function loadMenu() {
                 ${item.image
                   ? `<img src="${attrHTML(item.image)}" alt="" loading="lazy" />`
                   : `<svg viewBox="0 0 24 24"><use href="#d-plate"/></svg>`}
+                ${item.badge ? `<span class="card-badge">${escapeHTML(item.badge)}</span>` : ""}
                 <span class="price-badge">${escapeHTML(item.price)}</span>
               </div>
               <div class="card-body">
@@ -283,6 +284,46 @@ function updateFabCount() {
   }
 }
 
+// ---------- Suggestions de vente additionnelle (upsell) ----------
+function getUpsellSuggestions() {
+  const cartCategories = new Set(
+    Object.keys(cart)
+      .map((id) => menuItemsById[id]?.category)
+      .filter(Boolean)
+  );
+  const wanted = ["boissons", "desserts", "sauces"];
+  const suggestions = [];
+  for (const catId of wanted) {
+    if (cartCategories.has(catId)) continue;
+    const candidate = Object.values(menuItemsById).find(
+      (i) => i.category === catId && i.available !== false
+    );
+    if (candidate) suggestions.push(candidate);
+    if (suggestions.length >= 2) break;
+  }
+  return suggestions;
+}
+
+function buildUpsellHTML() {
+  const suggestions = getUpsellSuggestions();
+  if (suggestions.length === 0) return "";
+  return `
+    <div class="cart-upsell">
+      <p class="cart-upsell-label">Envie d&rsquo;ajouter&nbsp;?</p>
+      <div class="cart-upsell-chips">
+        ${suggestions
+          .map(
+            (item) => `
+          <button type="button" class="upsell-chip" data-upsell-add="${item.id}">
+            <span class="i-plus"><svg viewBox="0 0 24 24"><use href="#i-plus"/></svg></span>
+            ${escapeHTML(item.name)} <span class="upsell-price">${escapeHTML(item.price)}</span>
+          </button>`
+          )
+          .join("")}
+      </div>
+    </div>`;
+}
+
 function renderCart() {
   const itemsEl = document.getElementById("cartItems");
   const footerEl = document.getElementById("cartFooter");
@@ -295,11 +336,12 @@ function renderCart() {
     return;
   }
 
-  itemsEl.innerHTML = entries
-    .map(([id, qty]) => {
-      const item = menuItemsById[id];
-      const lineTotal = parsePrice(item.price) * qty;
-      return `
+  itemsEl.innerHTML =
+    entries
+      .map(([id, qty]) => {
+        const item = menuItemsById[id];
+        const lineTotal = parsePrice(item.price) * qty;
+        return `
         <div class="cart-item">
           ${item.image ? `<img class="cart-item-thumb" src="${attrHTML(item.image)}" alt="" />` : ""}
           <div class="cart-item-info">
@@ -321,8 +363,8 @@ function renderCart() {
             </button>
           </div>
         </div>`;
-    })
-    .join("");
+      })
+      .join("") + buildUpsellHTML();
 
   itemsEl.querySelectorAll(".qty-stepper").forEach((stepper) => {
     const id = stepper.dataset.itemId;
@@ -336,6 +378,9 @@ function renderCart() {
       syncQtyDisplays();
       renderCart();
     });
+  });
+  itemsEl.querySelectorAll("[data-upsell-add]").forEach((btn) => {
+    btn.addEventListener("click", () => changeQty(btn.dataset.upsellAdd, 1));
   });
 
   footerEl.style.display = "block";

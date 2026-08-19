@@ -173,13 +173,14 @@ function renderMenu(menu) {
         <button class="btn btn-outline btn-sm" data-delete-cat="${cat.id}">🗑 Supprimer la catégorie</button>
       </div>
       <div class="item-row head">
-        <div>Nom du plat</div><div>Description</div><div>Prix</div><div>Photo</div><div>Visible</div><div></div><div></div>
+        <div>Nom du plat</div><div>Description</div><div>Prix</div><div>Badge</div><div>Photo</div><div>Visible</div><div></div><div></div>
       </div>
       <div class="items-list"></div>
       <div class="add-item-form" data-add-form="${cat.id}">
         <input placeholder="Nom du nouveau plat" data-field="name" />
         <input placeholder="Description (optionnel)" data-field="description" />
         <input placeholder="Prix (ex: 12,90 €)" data-field="price" />
+        <input placeholder="Badge (ex: Populaire)" data-field="badge" />
         <div class="photo-field">
           <input placeholder="Photo (URL, optionnel)" data-field="image" />
           <label class="upload-btn-sm" title="Envoyer une photo">📷<input type="file" accept="image/*" data-upload-image hidden /></label>
@@ -203,12 +204,13 @@ function renderMenu(menu) {
       const name = form.querySelector('[data-field="name"]').value.trim();
       const description = form.querySelector('[data-field="description"]').value.trim();
       const price = form.querySelector('[data-field="price"]').value.trim();
+      const badge = form.querySelector('[data-field="badge"]').value.trim();
       const image = form.querySelector('[data-field="image"]').value.trim();
       if (!name || !price) {
         showToast("Nom et prix sont requis.", true);
         return;
       }
-      addItem(catId, { name, description, price, image }, form);
+      addItem(catId, { name, description, price, badge, image }, form);
     });
   });
 }
@@ -248,6 +250,7 @@ function renderItemRow(item) {
     <input value="${attr(item.name)}" data-field="name" />
     <input value="${attr(item.description || "")}" data-field="description" />
     <input value="${attr(item.price)}" data-field="price" />
+    <input value="${attr(item.badge || "")}" data-field="badge" placeholder="ex: Populaire" />
     <div class="photo-field">
       <input value="${attr(item.image || "")}" data-field="image" placeholder="URL de la photo" />
       <label class="upload-btn-sm" title="Envoyer une photo">📷<input type="file" accept="image/*" data-upload-image hidden /></label>
@@ -273,11 +276,12 @@ function renderItemRow(item) {
     const name = row.querySelector('[data-field="name"]').value.trim();
     const description = row.querySelector('[data-field="description"]').value.trim();
     const price = row.querySelector('[data-field="price"]').value.trim();
+    const badge = row.querySelector('[data-field="badge"]').value.trim();
     const image = row.querySelector('[data-field="image"]').value.trim();
     try {
       await apiFetch(`/api/admin/menu/items/${item.id}`, {
         method: "PUT",
-        body: JSON.stringify({ name, description, price, image, available: currentAvailable }),
+        body: JSON.stringify({ name, description, price, badge, image, available: currentAvailable }),
       });
       showToast("Plat mis à jour ✅");
     } catch (err) {
