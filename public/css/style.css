@@ -484,6 +484,18 @@ a:focus-visible, button:focus-visible, input:focus-visible, .menu-tab:focus-visi
 .card-grid .card:nth-child(7n+5) .card-photo:not(:has(img)) { background: radial-gradient(circle at 45% 35%, #1a2430, #07080c 75%); }
 .card-grid .card:nth-child(7n+6) .card-photo:not(:has(img)) { background: radial-gradient(circle at 55% 55%, #302010, #0a0704 75%); }
 .card-grid .card:nth-child(7n+7) .card-photo:not(:has(img)) { background: radial-gradient(circle at 30% 40%, #3a2a10, #0a0704 75%); }
+.card-badge {
+  position: absolute; top: 12px; left: 12px; z-index: 1;
+  background: var(--green);
+  color: #06110a;
+  font-weight: 700;
+  font-size: .74rem;
+  letter-spacing: .02em;
+  padding: 5px 11px;
+  border-radius: 999px;
+  white-space: nowrap;
+  box-shadow: 0 6px 16px rgba(63,224,125,.3);
+}
 .price-badge {
   position: absolute; top: 12px; right: 12px; z-index: 1;
   background: rgba(8,9,11,.72);
@@ -745,6 +757,35 @@ footer {
 }
 .cart-item-remove:hover { color: var(--magenta); }
 .cart-item-remove svg { width: 16px; height: 16px; stroke: currentColor; }
+
+.cart-upsell {
+  margin-top: 14px;
+  padding-top: 16px;
+  border-top: 1px dashed rgba(255,255,255,.12);
+}
+.cart-upsell-label { margin: 0 0 10px; font-size: .82rem; color: var(--text-muted); font-weight: 600; }
+.cart-upsell-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.upsell-chip {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: var(--bg-card);
+  border: 1px solid rgba(63,224,125,.3);
+  color: var(--cream);
+  border-radius: 999px;
+  padding: 7px 12px 7px 8px;
+  font-size: .8rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background .2s var(--ease), border-color .2s var(--ease);
+}
+.upsell-chip:hover { background: var(--green-soft); border-color: var(--green); }
+.upsell-chip .i-plus {
+  width: 18px; height: 18px; border-radius: 50%;
+  background: var(--green); color: #06110a;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.upsell-chip .i-plus svg { width: 11px; height: 11px; stroke: currentColor; }
+.upsell-chip .upsell-price { color: var(--green); font-weight: 700; font-variant-numeric: tabular-nums; }
 
 .cart-footer {
   padding: 20px 24px 24px;

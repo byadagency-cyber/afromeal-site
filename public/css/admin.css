@@ -134,7 +134,7 @@ label { display: block; text-align: left; font-size: .82rem; font-weight: 600; m
 
 .item-row {
   display: grid;
-  grid-template-columns: 1.2fr 1.4fr .7fr 1.1fr auto auto auto;
+  grid-template-columns: 1.2fr 1.4fr .7fr .8fr 1.1fr auto auto auto;
   gap: 10px;
   align-items: center;
   padding: 10px 0;
