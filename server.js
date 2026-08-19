@@ -224,7 +224,7 @@ app.get("/api/admin/menu", requireAdmin, (req, res) => {
 });
 
 app.post("/api/admin/menu/items", requireAdmin, (req, res) => {
-  const { category, name, description, price, available, image } = req.body || {};
+  const { category, name, description, price, available, image, badge } = req.body || {};
   if (!category || !name || !price) {
     return res.status(400).json({ error: "Catégorie, nom et prix sont requis." });
   }
@@ -240,6 +240,7 @@ app.post("/api/admin/menu/items", requireAdmin, (req, res) => {
     price,
     available: available !== false,
     image: image || "",
+    badge: badge || "",
   };
   menu.items.push(item);
   writeJSON(MENU_FILE, menu);
@@ -251,7 +252,7 @@ app.put("/api/admin/menu/items/:id", requireAdmin, (req, res) => {
   const item = menu.items.find((i) => i.id === req.params.id);
   if (!item) return res.status(404).json({ error: "Plat introuvable." });
 
-  const { category, name, description, price, available, image } = req.body || {};
+  const { category, name, description, price, available, image, badge } = req.body || {};
   if (category) {
     if (!menu.categories.some((c) => c.id === category)) {
       return res.status(400).json({ error: "Catégorie inconnue." });
@@ -263,6 +264,7 @@ app.put("/api/admin/menu/items/:id", requireAdmin, (req, res) => {
   if (price !== undefined) item.price = price;
   if (available !== undefined) item.available = !!available;
   if (image !== undefined) item.image = image;
+  if (badge !== undefined) item.badge = badge;
 
   writeJSON(MENU_FILE, menu);
   res.json(item);

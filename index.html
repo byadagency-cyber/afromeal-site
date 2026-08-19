@@ -8,6 +8,372 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Restaurant",
+  "name": "AfroMeal",
+  "servesCuisine": "Afro-caribéenne",
+  "priceRange": "€€",
+  "telephone": "09 55 97 81 76",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "30 rue Caffarelli",
+    "addressLocality": "Nice",
+    "postalCode": "06000",
+    "addressCountry": "FR"
+  },
+  "url": "https://afromeal-site-production.up.railway.app/",
+  "sameAs": [
+    "https://www.instagram.com/afromeal/"
+  ],
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": [
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday"
+      ],
+      "opens": "11:30",
+      "closes": "14:00"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": [
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday"
+      ],
+      "opens": "18:30",
+      "closes": "23:00"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": [
+        "Saturday",
+        "Sunday"
+      ],
+      "opens": "18:30",
+      "closes": "23:00"
+    }
+  ],
+  "hasMenu": {
+    "@type": "Menu",
+    "hasMenuSection": [
+      {
+        "@type": "MenuSection",
+        "name": "Nos Entrées",
+        "hasMenuItem": [
+          {
+            "@type": "MenuItem",
+            "name": "Samoussa Thon",
+            "offers": {
+              "@type": "Offer",
+              "price": "5.50",
+              "priceCurrency": "EUR"
+            },
+            "description": "Servis par portion de quatre"
+          },
+          {
+            "@type": "MenuItem",
+            "name": "Samoussa Bœuf",
+            "offers": {
+              "@type": "Offer",
+              "price": "5.50",
+              "priceCurrency": "EUR"
+            },
+            "description": "Servis par portion de quatre"
+          }
+        ]
+      },
+      {
+        "@type": "MenuSection",
+        "name": "Nos Plats",
+        "hasMenuItem": [
+          {
+            "@type": "MenuItem",
+            "name": "Poulet Braisé",
+            "offers": {
+              "@type": "Offer",
+              "price": "11.90",
+              "priceCurrency": "EUR"
+            },
+            "description": "Cuisse de poulet marinée et braisée aux épices africaines. Accompagnée de riz noir."
+          },
+          {
+            "@type": "MenuItem",
+            "name": "Poulet Mafé",
+            "offers": {
+              "@type": "Offer",
+              "price": "12.90",
+              "priceCurrency": "EUR"
+            },
+            "description": "Plat incontournable d'Afrique de l'ouest. Sauce onctueuse à base de beurre de cacahuète. Accompagné de riz blanc."
+          },
+          {
+            "@type": "MenuItem",
+            "name": "Poulet Yassa",
+            "offers": {
+              "@type": "Offer",
+              "price": "12.90",
+              "priceCurrency": "EUR"
+            },
+            "description": "Plat authentique d'Afrique de l'ouest. Sauce acidulée aux oignons. Accompagné de riz blanc."
+          },
+          {
+            "@type": "MenuItem",
+            "name": "Poisson Braisé",
+            "offers": {
+              "@type": "Offer",
+              "price": "17.90",
+              "priceCurrency": "EUR"
+            },
+            "description": "Poisson mariné et braisé aux épices africaines."
+          },
+          {
+            "@type": "MenuItem",
+            "name": "Jamaïcan Curry",
+            "offers": {
+              "@type": "Offer",
+              "price": "14.90",
+              "priceCurrency": "EUR"
+            },
+            "description": "Sauce crémeuse afro-caribéenne à base de lait de coco, curry, accompagnée de riz blanc. (Crevettes ou Poulet)"
+          },
+          {
+            "@type": "MenuItem",
+            "name": "Dibi d'Agneau",
+            "offers": {
+              "@type": "Offer",
+              "price": "16.90",
+              "priceCurrency": "EUR"
+            },
+            "description": "Morceaux d'agneau aux épices africaines grillés au charbon de bois. Accompagné de riz noir."
+          },
+          {
+            "@type": "MenuItem",
+            "name": "Dibi Poulet",
+            "offers": {
+              "@type": "Offer",
+              "price": "14.90",
+              "priceCurrency": "EUR"
+            },
+            "description": "Morceaux de poulet aux épices africaines grillés au charbon de bois. Accompagné de riz noir."
+          }
+        ]
+      },
+      {
+        "@type": "MenuSection",
+        "name": "Sandwichs",
+        "hasMenuItem": [
+          {
+            "@type": "MenuItem",
+            "name": "Wrap Exotique",
+            "offers": {
+              "@type": "Offer",
+              "price": "6.90",
+              "priceCurrency": "EUR"
+            },
+            "description": "Galette de blé avec poulet ou steack, sauce originale, salade, crudités et aloko."
+          },
+          {
+            "@type": "MenuItem",
+            "name": "Chicken Dib's",
+            "offers": {
+              "@type": "Offer",
+              "price": "8.90",
+              "priceCurrency": "EUR"
+            },
+            "description": "Poulet aux épices africaines grillé au charbon de bois, salade, crudités."
+          },
+          {
+            "@type": "MenuItem",
+            "name": "Agneau Dib's",
+            "offers": {
+              "@type": "Offer",
+              "price": "10.90",
+              "priceCurrency": "EUR"
+            },
+            "description": "Agneau aux épices africaines grillé au charbon de bois, salade, crudités."
+          }
+        ]
+      },
+      {
+        "@type": "MenuSection",
+        "name": "Accompagnements & Suppléments",
+        "hasMenuItem": [
+          {
+            "@type": "MenuItem",
+            "name": "Riz blanc",
+            "offers": {
+              "@type": "Offer",
+              "price": "3.00",
+              "priceCurrency": "EUR"
+            }
+          },
+          {
+            "@type": "MenuItem",
+            "name": "Riz noir",
+            "offers": {
+              "@type": "Offer",
+              "price": "4.00",
+              "priceCurrency": "EUR"
+            }
+          },
+          {
+            "@type": "MenuItem",
+            "name": "Allocos",
+            "offers": {
+              "@type": "Offer",
+              "price": "4.00",
+              "priceCurrency": "EUR"
+            }
+          },
+          {
+            "@type": "MenuItem",
+            "name": "Cuisse de poulet",
+            "offers": {
+              "@type": "Offer",
+              "price": "3.50",
+              "priceCurrency": "EUR"
+            }
+          },
+          {
+            "@type": "MenuItem",
+            "name": "Frites de patate douce",
+            "offers": {
+              "@type": "Offer",
+              "price": "4.00",
+              "priceCurrency": "EUR"
+            }
+          }
+        ]
+      },
+      {
+        "@type": "MenuSection",
+        "name": "Desserts",
+        "hasMenuItem": [
+          {
+            "@type": "MenuItem",
+            "name": "Tiramisu",
+            "offers": {
+              "@type": "Offer",
+              "price": "3.50",
+              "priceCurrency": "EUR"
+            }
+          },
+          {
+            "@type": "MenuItem",
+            "name": "Degué",
+            "offers": {
+              "@type": "Offer",
+              "price": "4.00",
+              "priceCurrency": "EUR"
+            },
+            "description": "Semoule de mil au yaourt vanillé"
+          }
+        ]
+      },
+      {
+        "@type": "MenuSection",
+        "name": "Boissons (33cl)",
+        "hasMenuItem": [
+          {
+            "@type": "MenuItem",
+            "name": "Eau",
+            "offers": {
+              "@type": "Offer",
+              "price": "1.50",
+              "priceCurrency": "EUR"
+            }
+          },
+          {
+            "@type": "MenuItem",
+            "name": "Coca",
+            "offers": {
+              "@type": "Offer",
+              "price": "2.00",
+              "priceCurrency": "EUR"
+            }
+          },
+          {
+            "@type": "MenuItem",
+            "name": "Oasis Tropical",
+            "offers": {
+              "@type": "Offer",
+              "price": "2.00",
+              "priceCurrency": "EUR"
+            }
+          },
+          {
+            "@type": "MenuItem",
+            "name": "Bissap",
+            "offers": {
+              "@type": "Offer",
+              "price": "3.00",
+              "priceCurrency": "EUR"
+            }
+          }
+        ]
+      },
+      {
+        "@type": "MenuSection",
+        "name": "Sauces",
+        "hasMenuItem": [
+          {
+            "@type": "MenuItem",
+            "name": "Sauce verte",
+            "offers": {
+              "@type": "Offer",
+              "price": "0.50",
+              "priceCurrency": "EUR"
+            }
+          },
+          {
+            "@type": "MenuItem",
+            "name": "Piment",
+            "offers": {
+              "@type": "Offer",
+              "price": "0.50",
+              "priceCurrency": "EUR"
+            }
+          },
+          {
+            "@type": "MenuItem",
+            "name": "Mayonnaise",
+            "offers": {
+              "@type": "Offer",
+              "price": "0.50",
+              "priceCurrency": "EUR"
+            }
+          },
+          {
+            "@type": "MenuItem",
+            "name": "Sauce chili",
+            "offers": {
+              "@type": "Offer",
+              "price": "0.50",
+              "priceCurrency": "EUR"
+            }
+          },
+          {
+            "@type": "MenuItem",
+            "name": "Sauce poivrons",
+            "offers": {
+              "@type": "Offer",
+              "price": "0.50",
+              "priceCurrency": "EUR"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}
+</script>
 </head>
 <body>
 
@@ -114,7 +480,7 @@
 </section>
 
 <div class="highlight-bar" id="highlightBar">
-  🎤 AfroMeal a reçu la visite du rappeur américain <strong>Swae Lee</strong>, qui a adoré nos plats pleins de saveurs&nbsp;!
+  🔥 Cuisine afro&#8209;caribéenne 100&nbsp;% faite maison, sur place ou à emporter
 </div>
 
 <section id="about">
