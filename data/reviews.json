@@ -1,3 +1,28 @@
 {
-  "reviews": []
+  "reviews": [
+    {
+      "id": "rev1",
+      "author": "Albert Domergue",
+      "text": "Cuisine au top !! J'y suis allé 4 fois et jamais déçu ! Tout ce que j'ai goûté c'était vraiment bon (dibi d'agneau master class), portion très raisonnable et service au top. N'hésitez pas, foncez !!",
+      "rating": 5
+    },
+    {
+      "id": "rev2",
+      "author": "Hana Bouradjdi",
+      "text": "Je commande Afro Meal depuis 5 ans maintenant et leur cuisine est super copieuse. J'ai commandé un poulet yassa, un dibi agneau et un foutou sauce graine. Les 3 plats étaient excellents, le personnel est super agréable et la cuisine est authentique. Je recommande à 100%.",
+      "rating": 5
+    },
+    {
+      "id": "rev3",
+      "author": "Franceyean Yogaratnam",
+      "text": "Petit passage à Nice et nous avons découvert ce fabuleux resto africain. Que dire ! Le riz brun était cuit à la perfection, un poulet pas sec et une sauce aux oignons poivrons délicieuses. Très bon accueil, continuez comme ça !",
+      "rating": 5
+    },
+    {
+      "id": "rev4",
+      "author": "Marine MY",
+      "text": "Une véritable découverte culinaire ! Ce restaurant africain est un petit bijou. Ambiance conviviale, des plats qui vous font voyager dès que vous passez la porte. Je recommande vivement !",
+      "rating": 5
+    }
+  ]
 }
