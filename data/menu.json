@@ -44,7 +44,8 @@
       "description": "Servis par portion de quatre",
       "price": "5,50 €",
       "available": true,
-      "image": ""
+      "image": "",
+      "badge": ""
     },
     {
       "id": "e2",
@@ -53,7 +54,8 @@
       "description": "Servis par portion de quatre",
       "price": "5,50 €",
       "available": true,
-      "image": ""
+      "image": "",
+      "badge": ""
     },
     {
       "id": "p1",
@@ -62,7 +64,8 @@
       "description": "Cuisse de poulet marinée et braisée aux épices africaines. Accompagnée de riz noir.",
       "price": "11,90 €",
       "available": true,
-      "image": ""
+      "image": "",
+      "badge": "Signature"
     },
     {
       "id": "p2",
@@ -71,7 +74,8 @@
       "description": "Plat incontournable d'Afrique de l'ouest. Sauce onctueuse à base de beurre de cacahuète. Accompagné de riz blanc.",
       "price": "12,90 €",
       "available": true,
-      "image": ""
+      "image": "",
+      "badge": ""
     },
     {
       "id": "p3",
@@ -80,7 +84,8 @@
       "description": "Plat authentique d'Afrique de l'ouest. Sauce acidulée aux oignons. Accompagné de riz blanc.",
       "price": "12,90 €",
       "available": true,
-      "image": ""
+      "image": "",
+      "badge": ""
     },
     {
       "id": "p4",
@@ -89,7 +94,8 @@
       "description": "Poisson mariné et braisé aux épices africaines.",
       "price": "17,90 €",
       "available": true,
-      "image": ""
+      "image": "",
+      "badge": ""
     },
     {
       "id": "p5",
@@ -98,7 +104,8 @@
       "description": "Sauce crémeuse afro-caribéenne à base de lait de coco, curry, accompagnée de riz blanc. (Crevettes ou Poulet)",
       "price": "14,90 €",
       "available": true,
-      "image": ""
+      "image": "",
+      "badge": ""
     },
     {
       "id": "p6",
@@ -107,7 +114,8 @@
       "description": "Morceaux d'agneau aux épices africaines grillés au charbon de bois. Accompagné de riz noir.",
       "price": "16,90 €",
       "available": true,
-      "image": ""
+      "image": "",
+      "badge": "Populaire"
     },
     {
       "id": "p7",
@@ -116,7 +124,8 @@
       "description": "Morceaux de poulet aux épices africaines grillés au charbon de bois. Accompagné de riz noir.",
       "price": "14,90 €",
       "available": true,
-      "image": ""
+      "image": "",
+      "badge": ""
     },
     {
       "id": "s1",
@@ -125,7 +134,8 @@
       "description": "Galette de blé avec poulet ou steack, sauce originale, salade, crudités et aloko.",
       "price": "6,90 € seul / 8,90 € menu",
       "available": true,
-      "image": ""
+      "image": "",
+      "badge": ""
     },
     {
       "id": "s2",
@@ -134,7 +144,8 @@
       "description": "Poulet aux épices africaines grillé au charbon de bois, salade, crudités.",
       "price": "8,90 € seul / 10,90 € menu",
       "available": true,
-      "image": ""
+      "image": "",
+      "badge": ""
     },
     {
       "id": "s3",
@@ -143,7 +154,8 @@
       "description": "Agneau aux épices africaines grillé au charbon de bois, salade, crudités.",
       "price": "10,90 € seul / 11,90 € menu",
       "available": true,
-      "image": ""
+      "image": "",
+      "badge": ""
     },
     {
       "id": "a1",
@@ -152,7 +164,8 @@
       "description": "",
       "price": "3,00 €",
       "available": true,
-      "image": ""
+      "image": "",
+      "badge": ""
     },
     {
       "id": "a2",
@@ -161,7 +174,8 @@
       "description": "",
       "price": "4,00 €",
       "available": true,
-      "image": ""
+      "image": "",
+      "badge": ""
     },
     {
       "id": "a3",
@@ -170,7 +184,8 @@
       "description": "",
       "price": "4,00 €",
       "available": true,
-      "image": ""
+      "image": "",
+      "badge": ""
     },
     {
       "id": "a4",
@@ -179,7 +194,8 @@
       "description": "",
       "price": "3,50 €",
       "available": true,
-      "image": ""
+      "image": "",
+      "badge": ""
     },
     {
       "id": "a5",
@@ -188,7 +204,8 @@
       "description": "",
       "price": "4,00 €",
       "available": true,
-      "image": ""
+      "image": "",
+      "badge": ""
     },
     {
       "id": "d1",
@@ -197,7 +214,8 @@
       "description": "",
       "price": "3,50 €",
       "available": true,
-      "image": ""
+      "image": "",
+      "badge": ""
     },
     {
       "id": "d2",
@@ -206,7 +224,8 @@
       "description": "Semoule de mil au yaourt vanillé",
       "price": "4,00 €",
       "available": true,
-      "image": ""
+      "image": "",
+      "badge": "Coup de cœur"
     },
     {
       "id": "b1",
@@ -215,7 +234,8 @@
       "description": "",
       "price": "1,50 €",
       "available": true,
-      "image": ""
+      "image": "",
+      "badge": ""
     },
     {
       "id": "b2",
@@ -224,7 +244,8 @@
       "description": "",
       "price": "2,00 €",
       "available": true,
-      "image": ""
+      "image": "",
+      "badge": ""
     },
     {
       "id": "b3",
@@ -233,7 +254,8 @@
       "description": "",
       "price": "2,00 €",
       "available": true,
-      "image": ""
+      "image": "",
+      "badge": ""
     },
     {
       "id": "b4",
@@ -242,7 +264,8 @@
       "description": "",
       "price": "3,00 €",
       "available": true,
-      "image": ""
+      "image": "",
+      "badge": ""
     },
     {
       "id": "sc1",
@@ -251,7 +274,8 @@
       "description": "",
       "price": "0,50 €",
       "available": true,
-      "image": ""
+      "image": "",
+      "badge": ""
     },
     {
       "id": "sc2",
@@ -260,7 +284,8 @@
       "description": "",
       "price": "0,50 €",
       "available": true,
-      "image": ""
+      "image": "",
+      "badge": ""
     },
     {
       "id": "sc3",
@@ -269,7 +294,8 @@
       "description": "",
       "price": "0,50 €",
       "available": true,
-      "image": ""
+      "image": "",
+      "badge": ""
     },
     {
       "id": "sc4",
@@ -278,7 +304,8 @@
       "description": "",
       "price": "0,50 €",
       "available": true,
-      "image": ""
+      "image": "",
+      "badge": ""
     },
     {
       "id": "sc5",
@@ -287,7 +314,8 @@
       "description": "",
       "price": "0,50 €",
       "available": true,
-      "image": ""
+      "image": "",
+      "badge": ""
     }
   ]
 }
