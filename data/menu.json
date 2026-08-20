@@ -44,7 +44,7 @@
       "description": "Servis par portion de quatre",
       "price": "5,50 €",
       "available": true,
-      "image": "",
+      "image": "/images/menu/e1-samoussa-thon.jpg",
       "badge": ""
     },
     {
@@ -54,7 +54,7 @@
       "description": "Servis par portion de quatre",
       "price": "5,50 €",
       "available": true,
-      "image": "",
+      "image": "/images/menu/e2-samoussa-boeuf.jpg",
       "badge": ""
     },
     {
@@ -64,7 +64,7 @@
       "description": "Cuisse de poulet marinée et braisée aux épices africaines. Accompagnée de riz noir.",
       "price": "11,90 €",
       "available": true,
-      "image": "",
+      "image": "/images/menu/p1-poulet-braise.jpg",
       "badge": "Signature"
     },
     {
@@ -74,7 +74,7 @@
       "description": "Plat incontournable d'Afrique de l'ouest. Sauce onctueuse à base de beurre de cacahuète. Accompagné de riz blanc.",
       "price": "12,90 €",
       "available": true,
-      "image": "",
+      "image": "/images/menu/p2-poulet-mafe.jpg",
       "badge": ""
     },
     {
@@ -84,7 +84,7 @@
       "description": "Plat authentique d'Afrique de l'ouest. Sauce acidulée aux oignons. Accompagné de riz blanc.",
       "price": "12,90 €",
       "available": true,
-      "image": "",
+      "image": "/images/menu/p3-poulet-yassa.jpg",
       "badge": ""
     },
     {
@@ -94,7 +94,7 @@
       "description": "Poisson mariné et braisé aux épices africaines.",
       "price": "17,90 €",
       "available": true,
-      "image": "",
+      "image": "/images/menu/p4-poisson-braise.jpg",
       "badge": ""
     },
     {
@@ -104,7 +104,7 @@
       "description": "Sauce crémeuse afro-caribéenne à base de lait de coco, curry, accompagnée de riz blanc. (Crevettes ou Poulet)",
       "price": "14,90 €",
       "available": true,
-      "image": "",
+      "image": "/images/menu/p5-jamaican-curry.jpg",
       "badge": ""
     },
     {
@@ -114,7 +114,7 @@
       "description": "Morceaux d'agneau aux épices africaines grillés au charbon de bois. Accompagné de riz noir.",
       "price": "16,90 €",
       "available": true,
-      "image": "",
+      "image": "/images/menu/p6-dibi-agneau.jpg",
       "badge": "Populaire"
     },
     {
@@ -124,7 +124,7 @@
       "description": "Morceaux de poulet aux épices africaines grillés au charbon de bois. Accompagné de riz noir.",
       "price": "14,90 €",
       "available": true,
-      "image": "",
+      "image": "/images/menu/p7-dibi-poulet.jpg",
       "badge": ""
     },
     {
@@ -134,7 +134,7 @@
       "description": "Galette de blé avec poulet ou steack, sauce originale, salade, crudités et aloko.",
       "price": "6,90 € seul / 8,90 € menu",
       "available": true,
-      "image": "",
+      "image": "/images/menu/s1-wrap-exotique.jpg",
       "badge": ""
     },
     {
@@ -144,7 +144,7 @@
       "description": "Poulet aux épices africaines grillé au charbon de bois, salade, crudités.",
       "price": "8,90 € seul / 10,90 € menu",
       "available": true,
-      "image": "",
+      "image": "/images/menu/s2-chicken-dibs.jpg",
       "badge": ""
     },
     {
@@ -154,7 +154,7 @@
       "description": "Agneau aux épices africaines grillé au charbon de bois, salade, crudités.",
       "price": "10,90 € seul / 11,90 € menu",
       "available": true,
-      "image": "",
+      "image": "/images/menu/s3-agneau-dibs.jpg",
       "badge": ""
     },
     {
@@ -214,7 +214,7 @@
       "description": "",
       "price": "3,50 €",
       "available": true,
-      "image": "",
+      "image": "/images/menu/d1-tiramisu.jpg",
       "badge": ""
     },
     {
@@ -224,7 +224,7 @@
       "description": "Semoule de mil au yaourt vanillé",
       "price": "4,00 €",
       "available": true,
-      "image": "",
+      "image": "/images/menu/d2-degue.jpg",
       "badge": "Coup de cœur"
     },
     {
@@ -254,7 +254,7 @@
       "description": "",
       "price": "2,00 €",
       "available": true,
-      "image": "",
+      "image": "/images/menu/b3-oasis-tropical.jpg",
       "badge": ""
     },
     {
@@ -264,7 +264,7 @@
       "description": "",
       "price": "3,00 €",
       "available": true,
-      "image": "",
+      "image": "/images/menu/b4-bissap.jpg",
       "badge": ""
     },
     {
