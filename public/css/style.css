@@ -564,6 +564,16 @@ a:focus-visible, button:focus-visible, input:focus-visible, .menu-tab:focus-visi
 .info-row h4 { margin: 0 0 4px; font-size: .82rem; text-transform: uppercase; letter-spacing: .06em; color: var(--text-dim); font-weight: 600; }
 .info-row p { margin: 0; color: var(--cream); }
 .info-row a:hover { color: var(--green); }
+.delivery-links { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 2px; }
+.delivery-btn {
+  display: inline-flex; align-items: center;
+  padding: 7px 14px; border-radius: 999px;
+  background: var(--green-soft); color: var(--green);
+  font-size: .84rem; font-weight: 600; text-decoration: none;
+  border: 1px solid rgba(63,224,125,.25);
+  transition: background .2s var(--ease), color .2s var(--ease);
+}
+.delivery-btn:hover { background: var(--green); color: #06110a; }
 .hours-table { width: 100%; border-collapse: collapse; margin-top: 4px; }
 .hours-table td { padding: 6px 0; font-size: .92rem; color: var(--cream); }
 .hours-table td:last-child { text-align: right; color: var(--text-muted); font-variant-numeric: tabular-nums; }
@@ -688,6 +698,16 @@ footer {
   transition: transform .2s var(--ease);
 }
 .cart-fab:hover { transform: translateY(-3px) scale(1.04); }
+.whatsapp-fab {
+  position: fixed; left: 22px; bottom: 22px; z-index: 90;
+  width: 54px; height: 54px; border-radius: 50%;
+  background: #25d366; color: #06110a;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 12px 30px rgba(37,211,102,.35);
+  transition: transform .2s var(--ease);
+}
+.whatsapp-fab:hover { transform: translateY(-3px) scale(1.04); }
+.whatsapp-fab svg { width: 24px; height: 24px; stroke: currentColor; fill: none; }
 .cart-fab svg { width: 24px; height: 24px; stroke: currentColor; fill: none; }
 .cart-fab-count {
   position: absolute; top: -4px; right: -4px;
@@ -828,6 +848,7 @@ footer {
   .nav-toggle { display: block; }
   .cart-drawer { width: 100vw; }
   .cart-fab { right: 16px; bottom: 16px; }
+  .whatsapp-fab { left: 16px; bottom: 16px; width: 50px; height: 50px; }
   .menu-item-thumb { width: 52px; height: 52px; }
   .menu-item { flex-wrap: wrap; }
   .menu-item-right { width: 100%; justify-content: space-between; }
