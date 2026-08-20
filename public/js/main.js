@@ -56,6 +56,8 @@ async function loadInfo() {
     }
     restaurantWhatsapp = (info.whatsapp || "").trim();
     updateWhatsappAvailability();
+    updateWhatsappFab();
+    updateDeliveryLinks(info);
   } catch (e) {
     console.error("Impossible de charger les informations du restaurant.", e);
   }
@@ -425,6 +427,39 @@ function updateWhatsappAvailability() {
   noteEl.style.display = available ? "none" : "block";
   btn.style.display = available ? "inline-flex" : "none";
   updateWhatsappLink();
+}
+
+// Bouton flottant WhatsApp (contact rapide, indépendant du panier)
+function updateWhatsappFab() {
+  const fab = document.getElementById("whatsappFab");
+  if (!fab) return;
+  const digits = restaurantWhatsapp.replace(/[^\d]/g, "");
+  if (!digits) {
+    fab.style.display = "none";
+    return;
+  }
+  const message = "Bonjour AfroMeal, j'aurais une question 🙂";
+  fab.href = `https://wa.me/${digits}?text=${encodeURIComponent(message)}`;
+  fab.style.display = "flex";
+}
+
+// Liens plateformes de livraison (affichés uniquement si configurés en admin)
+function updateDeliveryLinks(info) {
+  const row = document.getElementById("deliveryRow");
+  const uberBtn = document.getElementById("deliveryUberEats");
+  const deliverooBtn = document.getElementById("deliveryDeliveroo");
+  if (!row || !uberBtn || !deliverooBtn) return;
+
+  const uberUrl = (info.ubereats || "").trim();
+  const deliverooUrl = (info.deliveroo || "").trim();
+
+  uberBtn.style.display = uberUrl ? "inline-flex" : "none";
+  if (uberUrl) uberBtn.href = uberUrl;
+
+  deliverooBtn.style.display = deliverooUrl ? "inline-flex" : "none";
+  if (deliverooUrl) deliverooBtn.href = deliverooUrl;
+
+  row.style.display = uberUrl || deliverooUrl ? "flex" : "none";
 }
 
 function openCart() {

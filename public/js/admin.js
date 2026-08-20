@@ -355,6 +355,8 @@ async function loadInfoPanel() {
     document.getElementById("infoPhone").value = info.phone || "";
     document.getElementById("infoInstagram").value = info.instagram || "";
     document.getElementById("infoWhatsapp").value = info.whatsapp || "";
+    document.getElementById("infoUberEats").value = info.ubereats || "";
+    document.getElementById("infoDeliveroo").value = info.deliveroo || "";
     document.getElementById("infoLogo").value = info.logo || "";
     renderUploadPreview(document.getElementById("logoPreview"), info.logo, "Aucun logo");
     document.getElementById("infoCoverImage").value = info.coverImage || "";
@@ -473,6 +475,8 @@ document.getElementById("infoForm").addEventListener("submit", async (e) => {
     phone: document.getElementById("infoPhone").value.trim(),
     instagram: document.getElementById("infoInstagram").value.trim(),
     whatsapp: document.getElementById("infoWhatsapp").value.trim(),
+    ubereats: document.getElementById("infoUberEats").value.trim(),
+    deliveroo: document.getElementById("infoDeliveroo").value.trim(),
     logo: document.getElementById("infoLogo").value.trim(),
     coverImage: document.getElementById("infoCoverImage").value.trim(),
     highlight: document.getElementById("infoHighlight").value.trim(),
