@@ -8,6 +8,372 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Restaurant",
+  "name": "AfroMeal",
+  "servesCuisine": "Afro-caribéenne",
+  "priceRange": "€€",
+  "telephone": "09 55 97 81 76",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "30 rue Caffarelli",
+    "addressLocality": "Nice",
+    "postalCode": "06000",
+    "addressCountry": "FR"
+  },
+  "url": "https://afromeal-site-production.up.railway.app/",
+  "sameAs": [
+    "https://www.instagram.com/afromeal/"
+  ],
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": [
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday"
+      ],
+      "opens": "11:30",
+      "closes": "14:00"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": [
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday"
+      ],
+      "opens": "18:30",
+      "closes": "23:00"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": [
+        "Saturday",
+        "Sunday"
+      ],
+      "opens": "18:30",
+      "closes": "23:00"
+    }
+  ],
+  "hasMenu": {
+    "@type": "Menu",
+    "hasMenuSection": [
+      {
+        "@type": "MenuSection",
+        "name": "Nos Entrées",
+        "hasMenuItem": [
+          {
+            "@type": "MenuItem",
+            "name": "Samoussa Thon",
+            "offers": {
+              "@type": "Offer",
+              "price": "5.50",
+              "priceCurrency": "EUR"
+            },
+            "description": "Servis par portion de quatre"
+          },
+          {
+            "@type": "MenuItem",
+            "name": "Samoussa Bœuf",
+            "offers": {
+              "@type": "Offer",
+              "price": "5.50",
+              "priceCurrency": "EUR"
+            },
+            "description": "Servis par portion de quatre"
+          }
+        ]
+      },
+      {
+        "@type": "MenuSection",
+        "name": "Nos Plats",
+        "hasMenuItem": [
+          {
+            "@type": "MenuItem",
+            "name": "Poulet Braisé",
+            "offers": {
+              "@type": "Offer",
+              "price": "11.90",
+              "priceCurrency": "EUR"
+            },
+            "description": "Cuisse de poulet marinée et braisée aux épices africaines. Accompagnée de riz noir."
+          },
+          {
+            "@type": "MenuItem",
+            "name": "Poulet Mafé",
+            "offers": {
+              "@type": "Offer",
+              "price": "12.90",
+              "priceCurrency": "EUR"
+            },
+            "description": "Plat incontournable d'Afrique de l'ouest. Sauce onctueuse à base de beurre de cacahuète. Accompagné de riz blanc."
+          },
+          {
+            "@type": "MenuItem",
+            "name": "Poulet Yassa",
+            "offers": {
+              "@type": "Offer",
+              "price": "12.90",
+              "priceCurrency": "EUR"
+            },
+            "description": "Plat authentique d'Afrique de l'ouest. Sauce acidulée aux oignons. Accompagné de riz blanc."
+          },
+          {
+            "@type": "MenuItem",
+            "name": "Poisson Braisé",
+            "offers": {
+              "@type": "Offer",
+              "price": "17.90",
+              "priceCurrency": "EUR"
+            },
+            "description": "Poisson mariné et braisé aux épices africaines."
+          },
+          {
+            "@type": "MenuItem",
+            "name": "Jamaïcan Curry",
+            "offers": {
+              "@type": "Offer",
+              "price": "14.90",
+              "priceCurrency": "EUR"
+            },
+            "description": "Sauce crémeuse afro-caribéenne à base de lait de coco, curry, accompagnée de riz blanc. (Crevettes ou Poulet)"
+          },
+          {
+            "@type": "MenuItem",
+            "name": "Dibi d'Agneau",
+            "offers": {
+              "@type": "Offer",
+              "price": "16.90",
+              "priceCurrency": "EUR"
+            },
+            "description": "Morceaux d'agneau aux épices africaines grillés au charbon de bois. Accompagné de riz noir."
+          },
+          {
+            "@type": "MenuItem",
+            "name": "Dibi Poulet",
+            "offers": {
+              "@type": "Offer",
+              "price": "14.90",
+              "priceCurrency": "EUR"
+            },
+            "description": "Morceaux de poulet aux épices africaines grillés au charbon de bois. Accompagné de riz noir."
+          }
+        ]
+      },
+      {
+        "@type": "MenuSection",
+        "name": "Sandwichs",
+        "hasMenuItem": [
+          {
+            "@type": "MenuItem",
+            "name": "Wrap Exotique",
+            "offers": {
+              "@type": "Offer",
+              "price": "6.90",
+              "priceCurrency": "EUR"
+            },
+            "description": "Galette de blé avec poulet ou steack, sauce originale, salade, crudités et aloko."
+          },
+          {
+            "@type": "MenuItem",
+            "name": "Chicken Dib's",
+            "offers": {
+              "@type": "Offer",
+              "price": "8.90",
+              "priceCurrency": "EUR"
+            },
+            "description": "Poulet aux épices africaines grillé au charbon de bois, salade, crudités."
+          },
+          {
+            "@type": "MenuItem",
+            "name": "Agneau Dib's",
+            "offers": {
+              "@type": "Offer",
+              "price": "10.90",
+              "priceCurrency": "EUR"
+            },
+            "description": "Agneau aux épices africaines grillé au charbon de bois, salade, crudités."
+          }
+        ]
+      },
+      {
+        "@type": "MenuSection",
+        "name": "Accompagnements & Suppléments",
+        "hasMenuItem": [
+          {
+            "@type": "MenuItem",
+            "name": "Riz blanc",
+            "offers": {
+              "@type": "Offer",
+              "price": "3.00",
+              "priceCurrency": "EUR"
+            }
+          },
+          {
+            "@type": "MenuItem",
+            "name": "Riz noir",
+            "offers": {
+              "@type": "Offer",
+              "price": "4.00",
+              "priceCurrency": "EUR"
+            }
+          },
+          {
+            "@type": "MenuItem",
+            "name": "Allocos",
+            "offers": {
+              "@type": "Offer",
+              "price": "4.00",
+              "priceCurrency": "EUR"
+            }
+          },
+          {
+            "@type": "MenuItem",
+            "name": "Cuisse de poulet",
+            "offers": {
+              "@type": "Offer",
+              "price": "3.50",
+              "priceCurrency": "EUR"
+            }
+          },
+          {
+            "@type": "MenuItem",
+            "name": "Frites de patate douce",
+            "offers": {
+              "@type": "Offer",
+              "price": "4.00",
+              "priceCurrency": "EUR"
+            }
+          }
+        ]
+      },
+      {
+        "@type": "MenuSection",
+        "name": "Desserts",
+        "hasMenuItem": [
+          {
+            "@type": "MenuItem",
+            "name": "Tiramisu",
+            "offers": {
+              "@type": "Offer",
+              "price": "3.50",
+              "priceCurrency": "EUR"
+            }
+          },
+          {
+            "@type": "MenuItem",
+            "name": "Degué",
+            "offers": {
+              "@type": "Offer",
+              "price": "4.00",
+              "priceCurrency": "EUR"
+            },
+            "description": "Semoule de mil au yaourt vanillé"
+          }
+        ]
+      },
+      {
+        "@type": "MenuSection",
+        "name": "Boissons (33cl)",
+        "hasMenuItem": [
+          {
+            "@type": "MenuItem",
+            "name": "Eau",
+            "offers": {
+              "@type": "Offer",
+              "price": "1.50",
+              "priceCurrency": "EUR"
+            }
+          },
+          {
+            "@type": "MenuItem",
+            "name": "Coca",
+            "offers": {
+              "@type": "Offer",
+              "price": "2.00",
+              "priceCurrency": "EUR"
+            }
+          },
+          {
+            "@type": "MenuItem",
+            "name": "Oasis Tropical",
+            "offers": {
+              "@type": "Offer",
+              "price": "2.00",
+              "priceCurrency": "EUR"
+            }
+          },
+          {
+            "@type": "MenuItem",
+            "name": "Bissap",
+            "offers": {
+              "@type": "Offer",
+              "price": "3.00",
+              "priceCurrency": "EUR"
+            }
+          }
+        ]
+      },
+      {
+        "@type": "MenuSection",
+        "name": "Sauces",
+        "hasMenuItem": [
+          {
+            "@type": "MenuItem",
+            "name": "Sauce verte",
+            "offers": {
+              "@type": "Offer",
+              "price": "0.50",
+              "priceCurrency": "EUR"
+            }
+          },
+          {
+            "@type": "MenuItem",
+            "name": "Piment",
+            "offers": {
+              "@type": "Offer",
+              "price": "0.50",
+              "priceCurrency": "EUR"
+            }
+          },
+          {
+            "@type": "MenuItem",
+            "name": "Mayonnaise",
+            "offers": {
+              "@type": "Offer",
+              "price": "0.50",
+              "priceCurrency": "EUR"
+            }
+          },
+          {
+            "@type": "MenuItem",
+            "name": "Sauce chili",
+            "offers": {
+              "@type": "Offer",
+              "price": "0.50",
+              "priceCurrency": "EUR"
+            }
+          },
+          {
+            "@type": "MenuItem",
+            "name": "Sauce poivrons",
+            "offers": {
+              "@type": "Offer",
+              "price": "0.50",
+              "priceCurrency": "EUR"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}
+</script>
 </head>
 <body>
 
@@ -54,6 +420,8 @@
 
     <symbol id="i-whatsapp" viewBox="0 0 24 24"><path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.6-1.2A9 9 0 1 0 12 3Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M8.3 8.6c-.2.9 0 2 1.3 3.6 1.3 1.6 2.4 2.2 3.4 2.4.9.2 1.6-.3 1.9-.9l.3-.6-1.8-1-.5.7c-.1.2-.4.2-.6.1-.6-.3-1.4-1-1.9-1.7-.1-.2-.1-.4.1-.6l.5-.6-.9-1.9-.6.2c-.4.2-.9.7-1.2 1.3Z" fill="currentColor"/></symbol>
 
+    <symbol id="i-bag" viewBox="0 0 24 24"><path d="M6 8h12l-1 12.2A2 2 0 0 1 15 22H9a2 2 0 0 1-2-1.8L6 8Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M9 8V6a3 3 0 0 1 6 0v2" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></symbol>
+
     <symbol id="i-plus" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="5" y1="12" x2="19" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
 
     <symbol id="i-minus" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
@@ -72,7 +440,6 @@
     </a>
     <ul class="nav-links" id="navLinks">
       <li><a href="#about">À propos</a></li>
-      <li><a href="#gallery">Galerie</a></li>
       <li><a href="#menu">Notre carte</a></li>
       <li><a href="#contact">Infos &amp; Contact</a></li>
     </ul>
@@ -115,7 +482,7 @@
 </section>
 
 <div class="highlight-bar" id="highlightBar">
-  🎤 AfroMeal a reçu la visite du rappeur américain <strong>Swae Lee</strong>, qui a adoré nos plats pleins de saveurs&nbsp;!
+  🔥 Cuisine afro&#8209;caribéenne 100&nbsp;% faite maison, sur place ou à emporter
 </div>
 
 <section id="about">
@@ -145,26 +512,6 @@
   </div>
 </section>
 
-<section id="gallery">
-  <div class="container">
-    <div class="section-head reveal">
-      <span class="eyebrow">Galerie</span>
-      <h2>Un aperçu de nos plats</h2>
-      <p>Retrouvez encore plus de photos sur notre compte <a href="https://www.instagram.com/afromeal/" target="_blank" rel="noopener" style="color:var(--green); font-weight:600;">Instagram @afromeal</a>.</p>
-    </div>
-    <div class="gallery-grid">
-      <div class="dish-card c1 reveal" style="--delay:0s"><div class="bg"></div><div class="icon-wrap"><svg><use href="#d-drumstick"/></svg></div><div class="caption"><span class="tag">Signature</span><span class="name">Poulet Braisé</span></div></div>
-      <div class="dish-card c2 reveal" style="--delay:.05s"><div class="bg"></div><div class="icon-wrap"><svg><use href="#d-bowl"/></svg></div><div class="caption"><span class="tag">Ouest africain</span><span class="name">Poulet Mafé</span></div></div>
-      <div class="dish-card c3 reveal" style="--delay:.1s"><div class="bg"></div><div class="icon-wrap"><svg><use href="#d-plate"/></svg></div><div class="caption"><span class="tag">Ouest africain</span><span class="name">Poulet Yassa</span></div></div>
-      <div class="dish-card c4 reveal" style="--delay:.15s"><div class="bg"></div><div class="icon-wrap"><svg><use href="#d-fish"/></svg></div><div class="caption"><span class="tag">Grillé</span><span class="name">Poisson Braisé</span></div></div>
-      <div class="dish-card c5 reveal" style="--delay:0s"><div class="bg"></div><div class="icon-wrap"><svg><use href="#d-shrimp"/></svg></div><div class="caption"><span class="tag">Caraïbes</span><span class="name">Jamaïcan Curry</span></div></div>
-      <div class="dish-card c6 reveal" style="--delay:.05s"><div class="bg"></div><div class="icon-wrap"><svg><use href="#d-skewer"/></svg></div><div class="caption"><span class="tag">Charbon de bois</span><span class="name">Dibi d&rsquo;Agneau</span></div></div>
-      <div class="dish-card c7 reveal" style="--delay:.1s"><div class="bg"></div><div class="icon-wrap"><svg><use href="#d-wrap"/></svg></div><div class="caption"><span class="tag">Sandwich</span><span class="name">Wrap Exotique</span></div></div>
-      <div class="dish-card c8 reveal" style="--delay:.15s"><div class="bg"></div><div class="icon-wrap"><svg><use href="#d-cup"/></svg></div><div class="caption"><span class="tag">Dessert</span><span class="name">Degué</span></div></div>
-    </div>
-  </div>
-</section>
-
 <section id="menu">
   <div class="container">
     <div class="section-head reveal">
@@ -181,7 +528,14 @@
 
 <section class="social-proof" id="socialProof" style="display:none;">
   <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Avis Google · 4,9/5 sur 115 avis</span>
+      <h2>Ils nous ont goûté</h2>
+    </div>
     <div id="reviewsList"></div>
+    <p class="reveal" style="margin-top:40px;">
+      <a href="https://www.google.com/maps/search/?api=1&amp;query=Afromeal+Nice+30+Rue+Caffarelli+06000+Nice" target="_blank" rel="noopener" class="reviews-cta">Voir tous les avis sur Google &rarr;</a>
+    </p>
   </div>
 </section>
 
@@ -219,6 +573,16 @@
           <div style="width:100%;">
             <h4>Horaires</h4>
             <table class="hours-table" id="hoursTable"></table>
+          </div>
+        </div>
+        <div class="info-row" id="deliveryRow" style="display:none;">
+          <div class="ic"><svg viewBox="0 0 24 24"><use href="#i-bag"/></svg></div>
+          <div>
+            <h4>Livraison</h4>
+            <div class="delivery-links">
+              <a id="deliveryUberEats" class="delivery-btn" href="#" target="_blank" rel="noopener" style="display:none;">Uber Eats</a>
+              <a id="deliveryDeliveroo" class="delivery-btn" href="#" target="_blank" rel="noopener" style="display:none;">Deliveroo</a>
+            </div>
           </div>
         </div>
       </div>
@@ -262,6 +626,10 @@
   <svg viewBox="0 0 24 24"><use href="#i-cart"/></svg>
   <span class="cart-fab-count" id="cartFabCount" style="display:none;">0</span>
 </button>
+
+<a class="whatsapp-fab" id="whatsappFab" href="#" target="_blank" rel="noopener" aria-label="Nous écrire sur WhatsApp" style="display:none;">
+  <svg viewBox="0 0 24 24"><use href="#i-whatsapp"/></svg>
+</a>
 
 <div class="cart-overlay" id="cartOverlay"></div>
 <aside class="cart-drawer" id="cartDrawer" aria-label="Panier">
